@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj": {}
+    "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj": {
+    "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
+        "projectUniqueName": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
         "projectName": "Group_1_Travel_Experts",
-        "projectPath": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
-        "packagesPath": "C:\\Users\\14039\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\",
+        "projectPath": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
+        "packagesPath": "C:\\Users\\jacke\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\14039\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jacke\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[2.2.8, )"
             },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
@@ -81,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
