@@ -34,7 +34,7 @@ namespace Group_1_Travel_Experts
             this.labelSuppliers = new System.Windows.Forms.Label();
             this.buttonModify = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliers)).BeginInit();
             this.SuspendLayout();
@@ -66,12 +66,13 @@ namespace Group_1_Travel_Experts
             this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModify.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonModify.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonModify.Location = new System.Drawing.Point(300, 569);
+            this.buttonModify.Location = new System.Drawing.Point(300, 570);
             this.buttonModify.Name = "buttonModify";
-            this.buttonModify.Size = new System.Drawing.Size(166, 39);
+            this.buttonModify.Size = new System.Drawing.Size(166, 37);
             this.buttonModify.TabIndex = 8;
             this.buttonModify.Text = "&Modify Supplier";
             this.buttonModify.UseVisualStyleBackColor = false;
+            this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
             // 
             // buttonAdd
             // 
@@ -84,18 +85,20 @@ namespace Group_1_Travel_Experts
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "&Add Supplier";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // buttonRemove
+            // buttonDelete
             // 
-            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRemove.BackColor = System.Drawing.Color.BurlyWood;
-            this.buttonRemove.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonRemove.Location = new System.Drawing.Point(583, 569);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(154, 39);
-            this.buttonRemove.TabIndex = 9;
-            this.buttonRemove.Text = "&Remove Supplier";
-            this.buttonRemove.UseVisualStyleBackColor = false;
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonDelete.BackColor = System.Drawing.Color.BurlyWood;
+            this.buttonDelete.ForeColor = System.Drawing.Color.Maroon;
+            this.buttonDelete.Location = new System.Drawing.Point(583, 570);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(154, 37);
+            this.buttonDelete.TabIndex = 9;
+            this.buttonDelete.Text = "&Delete Supplier";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonExit
             // 
@@ -119,7 +122,7 @@ namespace Group_1_Travel_Experts
             this.CancelButton = this.buttonExit;
             this.ClientSize = new System.Drawing.Size(785, 693);
             this.Controls.Add(this.buttonExit);
-            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelSuppliers);
@@ -142,7 +145,7 @@ namespace Group_1_Travel_Experts
 
         private System.Windows.Forms.DataGridView dataGridViewSuppliers;
         private System.Windows.Forms.Label labelSuppliers;
-        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonModify;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonExit;
