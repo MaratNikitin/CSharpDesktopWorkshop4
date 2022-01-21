@@ -36,8 +36,10 @@ namespace Group_1_Travel_Experts
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductsSuppliers));
             this.cboProducts = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
+            this.labelPackages = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,15 +51,6 @@ namespace Group_1_Travel_Experts
             this.cboProducts.Size = new System.Drawing.Size(235, 29);
             this.cboProducts.TabIndex = 0;
             this.cboProducts.SelectedIndexChanged += new System.EventHandler(this.cboProducts_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 21);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Products";
             // 
             // dgvSuppliers
             // 
@@ -102,8 +95,42 @@ namespace Group_1_Travel_Experts
             this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvSuppliers.RowTemplate.Height = 25;
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSuppliers.Size = new System.Drawing.Size(1086, 494);
+            this.dgvSuppliers.Size = new System.Drawing.Size(1086, 347);
             this.dgvSuppliers.TabIndex = 9;
+            this.dgvSuppliers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellClick);
+            // 
+            // labelPackages
+            // 
+            this.labelPackages.AutoSize = true;
+            this.labelPackages.BackColor = System.Drawing.Color.Transparent;
+            this.labelPackages.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPackages.Location = new System.Drawing.Point(12, 15);
+            this.labelPackages.Name = "labelPackages";
+            this.labelPackages.Size = new System.Drawing.Size(75, 21);
+            this.labelPackages.TabIndex = 14;
+            this.labelPackages.Text = "Products";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnAdd.Location = new System.Drawing.Point(12, 430);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(136, 29);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "&Add Supplier";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnExit.Location = new System.Drawing.Point(962, 527);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(136, 29);
+            this.btnExit.TabIndex = 19;
+            this.btnExit.Text = "&Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmProductsSuppliers
             // 
@@ -112,8 +139,10 @@ namespace Group_1_Travel_Experts
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1110, 568);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.labelPackages);
             this.Controls.Add(this.dgvSuppliers);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboProducts);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Maroon;
@@ -132,7 +161,9 @@ namespace Group_1_Travel_Experts
         #endregion
 
         private System.Windows.Forms.ComboBox cboProducts;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvSuppliers;
+        private System.Windows.Forms.Label labelPackages;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnExit;
     }
 }

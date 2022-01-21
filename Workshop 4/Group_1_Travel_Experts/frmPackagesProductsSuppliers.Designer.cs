@@ -38,7 +38,7 @@ namespace Group_1_Travel_Experts
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(535, 412);
+            this.ClientSize = new System.Drawing.Size(1085, 538);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Maroon;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
