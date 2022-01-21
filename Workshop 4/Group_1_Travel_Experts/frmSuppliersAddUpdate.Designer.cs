@@ -38,6 +38,8 @@ namespace Group_1_Travel_Experts
             // 
             // textBoxSupplierName
             // 
+            this.textBoxSupplierName.BackColor = System.Drawing.Color.Linen;
+            this.textBoxSupplierName.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxSupplierName.Location = new System.Drawing.Point(162, 51);
             this.textBoxSupplierName.MaxLength = 50;
             this.textBoxSupplierName.Name = "textBoxSupplierName";

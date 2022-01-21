@@ -196,8 +196,15 @@ namespace Group_1_Travel_Experts
                     dataGridViewSuppliers.Columns["SupplierId"].HeaderText = "Supplier ID";
                     dataGridViewSuppliers.Columns["SupName"].HeaderText = "Supplier Name";
 
+                    // styling the column headers
+                    dataGridViewSuppliers.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
+                    dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
+                    dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
+                    dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
+                    dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
+
                     // format alternating rows
-                    dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                    dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.Bisque;
 
                     // Resize the columns
                     dataGridViewSuppliers.Columns[0].Width = 100;
