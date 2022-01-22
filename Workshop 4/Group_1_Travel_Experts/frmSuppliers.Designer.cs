@@ -46,6 +46,7 @@ namespace Group_1_Travel_Experts
             this.dataGridViewSuppliers.Location = new System.Drawing.Point(44, 35);
             this.dataGridViewSuppliers.MultiSelect = false;
             this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
+            this.dataGridViewSuppliers.RowHeadersVisible = false;
             this.dataGridViewSuppliers.RowTemplate.Height = 25;
             this.dataGridViewSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSuppliers.Size = new System.Drawing.Size(693, 510);

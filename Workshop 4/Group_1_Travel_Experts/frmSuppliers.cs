@@ -207,7 +207,7 @@ namespace Group_1_Travel_Experts
                     dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.Bisque;
 
                     // Resize the columns
-                    dataGridViewSuppliers.Columns[0].Width = 100;
+                    dataGridViewSuppliers.Columns[0].Width = 150;
                     dataGridViewSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
