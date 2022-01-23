@@ -130,11 +130,11 @@ namespace Group_1_Travel_Experts
         private void StyleDataGridView(DataGridView dgv)
         {
             //Set header Style
-            dgvSuppliers.Columns["SupName"].HeaderText = "Suppliers";
-            dgvSuppliers.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgvSuppliers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgvSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
+            dgv.Columns["SupName"].HeaderText = "Suppliers";
+            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
+            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
 
             //Size columns
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; // auto size the columns to fit all the cell's content

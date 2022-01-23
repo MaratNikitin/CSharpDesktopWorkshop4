@@ -52,11 +52,6 @@ namespace Group_1_Travel_Experts
                 var productsSuppliersInstance = new frmProductsSuppliers { }; // an instance of the 'Products + Suppliers' form is created
                 productsSuppliersInstance.Show(); // 'frmProductsSuppliers' is opened
             }
-            else // it means that the last option 'Packages + Products + Suppliers' is chosen
-            {
-                var packagesProductsSuppliersInstance = new frmPackagesProductsSuppliers { }; // an instance of the 'Packages + Products + Suppliers' form is created
-                packagesProductsSuppliersInstance.Show(); // 'frmPackagesProductsSuppliers' is opened
-            }
         }
 
         // when the 'Exit' button is clicked

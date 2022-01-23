@@ -225,40 +225,31 @@ namespace Group_1_Travel_Experts
                 var selectedPackage = context.Packages.Find((int)dataGridViewPackages.SelectedCells[0].Value); // picking the selected package
 
                 // creating a complex LINQ query to gather columns from two different tables joining four different tables
-                var productsQuery = from somePackage in db.Packages
-                                    where somePackage.PackageId == selectedPackage.PackageId
-                                    join somePackagesProductsSupplier in db.PackagesProductsSuppliers
-                                        on somePackage.PackageId equals somePackagesProductsSupplier.PackageId
-                                    join someProductsSupplier in db.ProductsSuppliers
+                var productsQuery = from somePackagesProductsSupplier in db.PackagesProductsSuppliers // packagesProductsSuppliers
+                                    join somePackage in db.Packages // join packages
+                                        on somePackagesProductsSupplier.PackageId equals somePackage.PackageId
+                                    join someProductsSupplier in db.ProductsSuppliers // join ProductSuppliers
                                         on somePackagesProductsSupplier.ProductSupplierId equals someProductsSupplier.ProductSupplierId
-                                    join someProduct in db.Products
+                                    join someProduct in db.Products // join products
                                         on someProductsSupplier.ProductId equals someProduct.ProductId
+                                    join someSupplier in db.Suppliers
+                                        on someProductsSupplier.SupplierId equals someSupplier.SupplierId
+                                    where somePackage.PackageId == selectedPackage.PackageId
                                     select new
                                     {
-                                        somePackage.PackageId,
                                         somePackage.PkgName,
-                                        someProduct.ProductId,
-                                        someProduct.ProdName,                                       
-                                        someProductsSupplier.ProductSupplierId,
-                                        someProductsSupplier.SupplierId
+                                        someProduct.ProdName,
+                                        someSupplier.SupName
                                     };
                 dataGridViewProducts.DataSource = productsQuery.ToList();
 
                 // renaming the column headers properly:
-                dataGridViewProducts.Columns["PackageId"].HeaderText = "Package ID";
-                dataGridViewProducts.Columns["PkgName"].HeaderText = "Package Name";
-                dataGridViewProducts.Columns["ProductId"].HeaderText = "Product ID";
-                dataGridViewProducts.Columns["ProdName"].HeaderText = "Product Name";
-                dataGridViewProducts.Columns["ProductSupplierId"].HeaderText = "Product Supplier ID";
-                dataGridViewProducts.Columns["SupplierId"].HeaderText = "Supplier ID";
+                dataGridViewProducts.Columns["PkgName"].HeaderText = "Packages";
+                dataGridViewProducts.Columns["ProdName"].HeaderText = "Products";
+                dataGridViewProducts.Columns["SupName"].HeaderText = "Suppliers";
 
                 // setting desired widths of the displayed columns:
-                dataGridViewProducts.Columns["PackageId"].Width = 120; // width is set at 120px
-                dataGridViewProducts.Columns["PkgName"].Width = 200;
-                dataGridViewProducts.Columns["ProductId"].Width = 120;
-                dataGridViewProducts.Columns["ProdName"].Width = 200;
-                dataGridViewProducts.Columns["ProductSupplierId"].Width = 120;
-                dataGridViewProducts.Columns["SupplierId"].Width = 120;
+                dataGridViewProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // auto size the columns to fit all the cell's content
 
                 // styling the column headers row (i.e. the uppermost row)
                 dataGridViewProducts.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
@@ -266,28 +257,92 @@ namespace Group_1_Travel_Experts
                 dataGridViewProducts.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
                 dataGridViewProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
                 dataGridViewProducts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
-
-                // setting central text alignment for select columns:
-                dataGridViewProducts.Columns["PackageId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewProducts.Columns["ProductId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewProducts.Columns["ProductSupplierId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewProducts.Columns["SupplierId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
+        /// <summary>
+        /// Add product to the package
+        /// </summary>
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
+            frmAddProductsToPackages secondfrm = new frmAddProductsToPackages(); // add product form
+            
+            var selectedPackage = context.Packages.Find((int)dataGridViewPackages.SelectedCells[0].Value); // get selected package
+            secondfrm.selectedPackage = selectedPackage; // bring selected package to the second form
+            DialogResult result = secondfrm.ShowDialog(); // display second form
+            
+            if(result == DialogResult.OK) // if user pressed add
+            {
+                PackagesProductsSuppliers newPPS = new PackagesProductsSuppliers(); // create new PPS link
 
+                newPPS.PackageId = selectedPackage.PackageId; // assign packageId based on the product_SupplierID in second form
+                newPPS.ProductSupplierId = secondfrm.addProductsSupplierID; // assign productSupplierID
+                try
+                {
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        db.PackagesProductsSuppliers.Add(newPPS); // add new PPS link
+                        db.SaveChanges(); // save changes
+                    }
+                }
+                catch (Exception ex) //error message
+                {
+                    MessageBox.Show("Error occured when adding a new product to the package" + ex.Message, ex.GetType().ToString());
+                }
+                RefreshDataGridViewProducts(); // refresh product grid view
+            }
         }
-
+        /// <summary>
+        /// Remove selected PackagesProductsSuppliers from the database and updates the display
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRemoveProduct_Click(object sender, EventArgs e)
         {
 
-        }
+            var selectedPackage = context.Packages.Find((int)dataGridViewPackages.SelectedCells[0].Value); // get selected package
 
-        private void buttonModifyProduct_Click(object sender, EventArgs e)
-        {
+            int selecedRowIndex = dataGridViewProducts.SelectedCells[0].RowIndex; // get row index
+            DataGridViewRow selectedRow = dataGridViewProducts.Rows[selecedRowIndex]; // get row from selected cell
 
+            //Confirm with the user to make sure they want to delete the supplier from the product
+            DialogResult result = MessageBox.Show($"Delete {selectedRow.Cells["ProdName"].Value} supplied by {selectedRow.Cells["SupName"].Value}? ",
+            "Confirm Delete", MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        // get selected packagesProductsSupplier object
+                        var deleteQuery = (from pps in db.PackagesProductsSuppliers
+
+                                           join prodSup in db.ProductsSuppliers // join product_suppliers
+                                             on pps.ProductSupplierId equals prodSup.ProductSupplierId
+
+                                           join prod in db.Products // join products
+                                             on prodSup.ProductId equals prod.ProductId
+
+                                           join sup in db.Suppliers // join suppliers
+                                             on prodSup.SupplierId equals sup.SupplierId
+
+                                           where pps.PackageId == selectedPackage.PackageId &&
+                                                 prod.ProdName == selectedRow.Cells["ProdName"].Value.ToString() &&
+                                                 sup.SupName == selectedRow.Cells["SupName"].Value.ToString()
+
+                                           select new { pps }).Single();
+                        db.Remove(deleteQuery.pps);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception ex) //error message
+                {
+                    MessageBox.Show("Error occured when deleting a product from the package" + ex.Message, ex.GetType().ToString());
+                }
+                RefreshDataGridViewProducts(); // refresh product grid view
+            }
         }
     }
 }

@@ -240,7 +240,6 @@ namespace Group_1_Travel_Experts
             this.buttonModifyProduct.TabIndex = 12;
             this.buttonModifyProduct.Text = "Modify Product";
             this.buttonModifyProduct.UseVisualStyleBackColor = false;
-            this.buttonModifyProduct.Click += new System.EventHandler(this.buttonModifyProduct_Click);
             // 
             // labelPackages
             // 
