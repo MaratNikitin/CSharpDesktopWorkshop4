@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
-/*
- * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
- * This entity was created by Entity Framework Core using Database First 
- * Author: Entity Framework Core
- * SAIT, OOSD course, CPRG-207 - Threaded Project (Part 2), Workshop #4 - C#.NET, Group 1
- * When: January-February 2022
- */
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -53,8 +44,8 @@ namespace Group_1_Travel_Experts.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["TravelExperts"].ConnectionString);
-                // this way, the connection string is hidden in the "App.config" file
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=TravelExperts;Integrated Security=True");
             }
         }
 
