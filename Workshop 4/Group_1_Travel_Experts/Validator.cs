@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
@@ -28,6 +29,23 @@ namespace Group_1_Travel_Experts
                 msg += name + " is a required field." + LineEnd;
             }
             return msg;
+        }
+
+        /// <summary>
+        /// This validation method checks if data is entered in a textbox
+        /// </summary>
+        /// <param name="tb"></param>
+        /// <returns>true if a value is present, false and a messagebox is displayed if a value is not present</returns>
+        public static bool IsTextPresent(TextBox tb)
+        {
+            bool isValid = true;
+            if (tb.Text == "") // empty
+            {
+                isValid = false;
+                MessageBox.Show(tb.Tag + " is required");
+                tb.Focus();
+            }
+            return isValid;
         }
 
         /// <summary>
