@@ -32,7 +32,6 @@ namespace Group_1_Travel_Experts
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.labelChooseOption = new System.Windows.Forms.Label();
             this.groupBoxTables = new System.Windows.Forms.GroupBox();
-            this.radioButtonPackagesProductsSuppliers = new System.Windows.Forms.RadioButton();
             this.radioButtonProductsSuppliers = new System.Windows.Forms.RadioButton();
             this.radioButtonSuppliers = new System.Windows.Forms.RadioButton();
             this.radioButtonProducts = new System.Windows.Forms.RadioButton();
@@ -63,7 +62,6 @@ namespace Group_1_Travel_Experts
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxTables.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxTables.Controls.Add(this.radioButtonPackagesProductsSuppliers);
             this.groupBoxTables.Controls.Add(this.radioButtonProductsSuppliers);
             this.groupBoxTables.Controls.Add(this.radioButtonSuppliers);
             this.groupBoxTables.Controls.Add(this.radioButtonProducts);
@@ -74,19 +72,6 @@ namespace Group_1_Travel_Experts
             this.groupBoxTables.TabIndex = 1;
             this.groupBoxTables.TabStop = false;
             this.groupBoxTables.Enter += new System.EventHandler(this.groupBoxTables_Enter);
-            // 
-            // radioButtonPackagesProductsSuppliers
-            // 
-            this.radioButtonPackagesProductsSuppliers.AutoSize = true;
-            this.radioButtonPackagesProductsSuppliers.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonPackagesProductsSuppliers.ForeColor = System.Drawing.Color.Maroon;
-            this.radioButtonPackagesProductsSuppliers.Location = new System.Drawing.Point(19, 134);
-            this.radioButtonPackagesProductsSuppliers.Name = "radioButtonPackagesProductsSuppliers";
-            this.radioButtonPackagesProductsSuppliers.Size = new System.Drawing.Size(266, 25);
-            this.radioButtonPackagesProductsSuppliers.TabIndex = 6;
-            this.radioButtonPackagesProductsSuppliers.TabStop = true;
-            this.radioButtonPackagesProductsSuppliers.Text = "Packages + Products + Suppliers";
-            this.radioButtonPackagesProductsSuppliers.UseVisualStyleBackColor = true;
             // 
             // radioButtonProductsSuppliers
             // 
@@ -228,7 +213,6 @@ namespace Group_1_Travel_Experts
         private System.Windows.Forms.RadioButton radioButtonProducts;
         private System.Windows.Forms.RadioButton radioButtonPackages;
         private System.Windows.Forms.Label labelWelcome;
-        private System.Windows.Forms.RadioButton radioButtonPackagesProductsSuppliers;
         private System.Windows.Forms.RadioButton radioButtonProductsSuppliers;
         private System.Windows.Forms.Button buttonOpen;
         // private System.Windows.Forms.Button button2;
