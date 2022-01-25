@@ -48,7 +48,6 @@ namespace Group_1_Travel_Experts
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.buttonRemoveProduct = new System.Windows.Forms.Button();
-            this.buttonModifyProduct = new System.Windows.Forms.Button();
             this.labelPackages = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPackages)).BeginInit();
@@ -228,19 +227,6 @@ namespace Group_1_Travel_Experts
             this.buttonRemoveProduct.UseVisualStyleBackColor = false;
             this.buttonRemoveProduct.Click += new System.EventHandler(this.buttonRemoveProduct_Click);
             // 
-            // buttonModifyProduct
-            // 
-            this.buttonModifyProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModifyProduct.BackColor = System.Drawing.Color.BurlyWood;
-            this.buttonModifyProduct.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonModifyProduct.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonModifyProduct.Location = new System.Drawing.Point(1064, 546);
-            this.buttonModifyProduct.Name = "buttonModifyProduct";
-            this.buttonModifyProduct.Size = new System.Drawing.Size(136, 37);
-            this.buttonModifyProduct.TabIndex = 12;
-            this.buttonModifyProduct.Text = "Modify Product";
-            this.buttonModifyProduct.UseVisualStyleBackColor = false;
-            // 
             // labelPackages
             // 
             this.labelPackages.AutoSize = true;
@@ -272,7 +258,6 @@ namespace Group_1_Travel_Experts
             this.ClientSize = new System.Drawing.Size(1234, 673);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPackages);
-            this.Controls.Add(this.buttonModifyProduct);
             this.Controls.Add(this.buttonRemoveProduct);
             this.Controls.Add(this.buttonAddProduct);
             this.Controls.Add(this.dataGridViewProducts);
@@ -305,7 +290,6 @@ namespace Group_1_Travel_Experts
         private System.Windows.Forms.DataGridView dataGridViewProducts;
         private System.Windows.Forms.Button buttonAddProduct;
         private System.Windows.Forms.Button buttonRemoveProduct;
-        private System.Windows.Forms.Button buttonModifyProduct;
         private System.Windows.Forms.Label labelPackages;
         private System.Windows.Forms.Label label1;
     }

@@ -6743,45 +6743,20 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\jacke\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\scott\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
->>>>>>> main
+    "C:\\Users\\14039\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
+      "projectUniqueName": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
       "projectName": "Group_1_Travel_Experts",
-      "projectPath": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
-      "packagesPath": "C:\\Users\\jacke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacke\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\scott\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
-      "projectName": "Group_1_Travel_Experts",
-      "projectPath": "C:\\Users\\scott\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
-      "packagesPath": "C:\\Users\\scott\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scott\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\",
->>>>>>> main
+      "projectPath": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\Group_1_Travel_Experts.csproj",
+      "packagesPath": "C:\\Users\\14039\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\jacke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\14039\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-        "C:\\Users\\scott\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
->>>>>>> main
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -6851,8 +6826,16 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\14039\\Desktop\\ThreadedProjectPart2Group1\\Workshop 4\\Group_1_Travel_Experts\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -10,6 +10,14 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 
+/*
+ * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
+ * This form is used for displaying a list of packages in a list box and helps to add, modify or delete packages
+ * Author: Richard Cook
+ * SAIT, OOSD course, CPRG-207 - Threaded Project (Part 2), Workshop #4 - C#.NET, Group 1
+ * When: January-February 2022
+ */
+
 namespace Group_1_Travel_Experts
 {
     public partial class frmProducts : Form
@@ -28,14 +36,14 @@ namespace Group_1_Travel_Experts
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
                 
-                var products = db.Products.Select(p => new
-                {
-                    p.ProductId,
-                    p.ProdName
+                //var products = db.Products.Select(p => new
+                //{
+                //    p.ProductId,
+                //    p.ProdName
                    
-                }).ToList();
-                dgvProducts.DataSource = products;
-
+                //}).ToList();
+                //dgvProducts.DataSource = products;
+                DisplayProduct(); // DRY - all code with DGV styling should be there
                 // format headers
                 
 
@@ -43,12 +51,12 @@ namespace Group_1_Travel_Experts
                 
 
                 // format the columns
-                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                //dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-                dgvProducts.Columns[0].HeaderText = "Product ID";
+                //dgvProducts.Columns[0].HeaderText = "Product ID";
 
-                dgvProducts.Columns[1].Width = 200;
-                dgvProducts.Columns[1].HeaderText = "Product Name";
+                //dgvProducts.Columns[1].Width = 200;
+                //dgvProducts.Columns[1].HeaderText = "Product Name";
 
             }
         }
@@ -68,9 +76,18 @@ namespace Group_1_Travel_Experts
                 // enable Modify and Delete buttons
                 btnModifyProd.Enabled = true;
                 btnDeleteProd.Enabled = true;
+
+                // styling the DataGridView object:
+                dgvProducts.EnableHeadersVisualStyles = false;
+                dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
+                dgvProducts.Columns[0].Width = 200;
+                //dgvPructs.Coodlumns[1].Width = 400;
+                dgvProducts.Columns[0].HeaderText = "Product ID";
+                dgvProducts.Columns[1].HeaderText = "Product Name";
+                dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            //txtProductId.Focus();
         }
+        
         //user clicks the Add button
              
         private void btnAddProd_Click(object sender, EventArgs e)
@@ -92,7 +109,7 @@ namespace Group_1_Travel_Experts
                     {
                         db.Products.Add(selectedProduct);
                         db.SaveChanges();
-                        MessageBox.Show("Row was added to Products table");
+                        MessageBox.Show("1 row was added to the Products table");
                         this.DisplayProduct();
                     }
 
@@ -171,7 +188,7 @@ namespace Group_1_Travel_Experts
                 {
                     context.Products.Remove(selectedProduct); // row deleted
                     context.SaveChanges(); // changes saved
-                    MessageBox.Show("Row was deleted", "Good Job!");
+                    MessageBox.Show("1 row was deleted", "Good Job!");
                     DisplayProduct();
                 }
                 catch (DbUpdateConcurrencyException ex)

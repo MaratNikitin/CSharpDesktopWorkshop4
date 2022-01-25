@@ -204,7 +204,7 @@ namespace Group_1_Travel_Experts
                     dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
 
                     // format alternating rows
-                    dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.Bisque;
+                    //dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.Bisque;
 
                     // Resize the columns
                     dataGridViewSuppliers.Columns[0].Width = 150;
@@ -231,6 +231,11 @@ namespace Group_1_Travel_Experts
                 message += $"Error {err.Number}: {err.Message}\n";
             }
             MessageBox.Show(message, "Database error(s)");
+        }
+
+        private void dataGridViewSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

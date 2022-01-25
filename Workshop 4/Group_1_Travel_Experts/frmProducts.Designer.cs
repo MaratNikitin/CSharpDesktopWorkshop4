@@ -29,6 +29,10 @@ namespace Group_1_Travel_Experts
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducts));
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.btnDeleteProd = new System.Windows.Forms.Button();
@@ -41,71 +45,106 @@ namespace Group_1_Travel_Experts
             // 
             // dgvProducts
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Maroon;
+            this.dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(40, 71);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProducts.Location = new System.Drawing.Point(40, 46);
             this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProducts.RowTemplate.Height = 29;
-            this.dgvProducts.Size = new System.Drawing.Size(422, 210);
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProducts.Size = new System.Drawing.Size(355, 253);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
             // btnDeleteProd
             // 
-            this.btnDeleteProd.Location = new System.Drawing.Point(484, 175);
+            this.btnDeleteProd.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnDeleteProd.Location = new System.Drawing.Point(437, 161);
             this.btnDeleteProd.Name = "btnDeleteProd";
-            this.btnDeleteProd.Size = new System.Drawing.Size(92, 45);
+            this.btnDeleteProd.Size = new System.Drawing.Size(92, 35);
             this.btnDeleteProd.TabIndex = 1;
             this.btnDeleteProd.Text = "&Delete";
-            this.btnDeleteProd.UseVisualStyleBackColor = true;
+            this.btnDeleteProd.UseVisualStyleBackColor = false;
             this.btnDeleteProd.Click += new System.EventHandler(this.btnDeleteProd_Click);
             // 
             // btnCancelProd
             // 
-            this.btnCancelProd.Location = new System.Drawing.Point(484, 236);
+            this.btnCancelProd.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnCancelProd.Location = new System.Drawing.Point(437, 264);
             this.btnCancelProd.Name = "btnCancelProd";
-            this.btnCancelProd.Size = new System.Drawing.Size(92, 45);
+            this.btnCancelProd.Size = new System.Drawing.Size(92, 35);
             this.btnCancelProd.TabIndex = 2;
             this.btnCancelProd.Text = "&Cancel";
-            this.btnCancelProd.UseVisualStyleBackColor = true;
+            this.btnCancelProd.UseVisualStyleBackColor = false;
             this.btnCancelProd.Click += new System.EventHandler(this.btnCancelProd_Click);
             // 
             // btnAddProd
             // 
-            this.btnAddProd.Location = new System.Drawing.Point(484, 71);
+            this.btnAddProd.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnAddProd.Location = new System.Drawing.Point(437, 46);
             this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(92, 46);
+            this.btnAddProd.Size = new System.Drawing.Size(92, 35);
             this.btnAddProd.TabIndex = 3;
             this.btnAddProd.Text = "&Add";
-            this.btnAddProd.UseVisualStyleBackColor = true;
+            this.btnAddProd.UseVisualStyleBackColor = false;
             this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
             // btnModifyProd
             // 
-            this.btnModifyProd.Location = new System.Drawing.Point(484, 123);
+            this.btnModifyProd.BackColor = System.Drawing.Color.BurlyWood;
+            this.btnModifyProd.Location = new System.Drawing.Point(437, 102);
             this.btnModifyProd.Name = "btnModifyProd";
-            this.btnModifyProd.Size = new System.Drawing.Size(92, 46);
+            this.btnModifyProd.Size = new System.Drawing.Size(92, 36);
             this.btnModifyProd.TabIndex = 4;
             this.btnModifyProd.Text = "&Modify";
-            this.btnModifyProd.UseVisualStyleBackColor = true;
+            this.btnModifyProd.UseVisualStyleBackColor = false;
             this.btnModifyProd.Click += new System.EventHandler(this.btnModifyProd_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 40);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(40, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 28);
+            this.label1.Size = new System.Drawing.Size(217, 21);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Click to Select Entry";
+            this.label1.Text = "Products (select by clicking):";
             // 
             // frmProducts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(615, 322);
+            this.ClientSize = new System.Drawing.Size(561, 322);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModifyProd);
             this.Controls.Add(this.btnAddProd);

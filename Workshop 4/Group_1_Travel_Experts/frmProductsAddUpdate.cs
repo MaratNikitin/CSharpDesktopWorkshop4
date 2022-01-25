@@ -7,6 +7,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+/*
+ * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
+ * This form is used for displaying a list of packages in a list box and helps to add, modify or delete packages
+ * Author: Richard Cook
+ * SAIT, OOSD course, CPRG-207 - Threaded Project (Part 2), Workshop #4 - C#.NET, Group 1
+ * When: January-February 2022
+ */
+
 namespace Group_1_Travel_Experts
 {
     public partial class frmProductsAddUpdate : Form
@@ -77,7 +85,7 @@ namespace Group_1_Travel_Experts
             bool success = true;
             string errorMessage = "";
 
-            errorMessage += Validator.IsPresent(txtProductId.Text.ToString(), txtProductId.Tag.ToString());
+            //errorMessage += Validator.IsPresent(txtProductId.Text.ToString(), txtProductId.Tag.ToString());
             errorMessage += Validator.IsPresent(txtProdName.Text, txtProdName.Tag.ToString());
             errorMessage += Validator.IsWithinAllowedRangeOfCharacters(txtProdName.Text, txtProdName.Tag.ToString(), 50);
             
