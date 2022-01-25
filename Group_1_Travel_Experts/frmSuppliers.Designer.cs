@@ -191,10 +191,5 @@ namespace Group_1_Travel_Experts
         private System.Windows.Forms.Button buttonModify;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonModifyProduct;
-        private System.Windows.Forms.Button buttonRemoveContact;
-        private System.Windows.Forms.Button buttonAddContact;
-        private System.Windows.Forms.DataGridView dataGridViewSupplierContacts;
-        private System.Windows.Forms.Label labelSupplierContacts;
     }
 }
