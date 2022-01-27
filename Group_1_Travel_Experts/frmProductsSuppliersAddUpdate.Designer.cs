@@ -103,6 +103,9 @@ namespace Group_1_Travel_Experts
             // 
             // txtSearch
             // 
+            this.txtSearch.BackColor = System.Drawing.Color.Linen;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.ForeColor = System.Drawing.Color.Maroon;
             this.txtSearch.Location = new System.Drawing.Point(12, 46);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search";
