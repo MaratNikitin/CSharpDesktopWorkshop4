@@ -45,6 +45,9 @@ namespace Group_1_Travel_Experts
             // 
             // cboProducts
             // 
+            this.cboProducts.BackColor = System.Drawing.Color.Linen;
+            this.cboProducts.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cboProducts.ForeColor = System.Drawing.Color.Maroon;
             this.cboProducts.FormattingEnabled = true;
             this.cboProducts.Location = new System.Drawing.Point(95, 12);
             this.cboProducts.Name = "cboProducts";
