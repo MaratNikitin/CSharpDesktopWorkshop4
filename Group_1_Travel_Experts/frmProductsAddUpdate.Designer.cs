@@ -30,60 +30,38 @@ namespace Group_1_Travel_Experts
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductsAddUpdate));
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtProductId = new System.Windows.Forms.TextBox();
             this.txtProdName = new System.Windows.Forms.TextBox();
             this.btnOKProduct = new System.Windows.Forms.Button();
             this.btnCancelProduct = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(41, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Product ID";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(41, 75);
+            this.label2.Location = new System.Drawing.Point(41, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 21);
+            this.label2.Size = new System.Drawing.Size(148, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Product Name";
-            // 
-            // txtProductId
-            // 
-            this.txtProductId.BackColor = System.Drawing.Color.Linen;
-            this.txtProductId.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProductId.Location = new System.Drawing.Point(195, 31);
-            this.txtProductId.Name = "txtProductId";
-            this.txtProductId.Size = new System.Drawing.Size(353, 29);
-            this.txtProductId.TabIndex = 2;
-            this.txtProductId.Tag = "Product ID";
             // 
             // txtProdName
             // 
             this.txtProdName.BackColor = System.Drawing.Color.Linen;
             this.txtProdName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtProdName.Location = new System.Drawing.Point(195, 75);
+            this.txtProdName.Location = new System.Drawing.Point(195, 59);
             this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(353, 29);
+            this.txtProdName.Size = new System.Drawing.Size(353, 34);
             this.txtProdName.TabIndex = 3;
             this.txtProdName.Tag = "Product Name";
             // 
             // btnOKProduct
             // 
             this.btnOKProduct.BackColor = System.Drawing.Color.BurlyWood;
-            this.btnOKProduct.Location = new System.Drawing.Point(41, 128);
+            this.btnOKProduct.Location = new System.Drawing.Point(41, 119);
             this.btnOKProduct.Name = "btnOKProduct";
-            this.btnOKProduct.Size = new System.Drawing.Size(113, 33);
+            this.btnOKProduct.Size = new System.Drawing.Size(113, 42);
             this.btnOKProduct.TabIndex = 4;
             this.btnOKProduct.Text = "&Ok";
             this.btnOKProduct.UseVisualStyleBackColor = false;
@@ -92,9 +70,9 @@ namespace Group_1_Travel_Experts
             // btnCancelProduct
             // 
             this.btnCancelProduct.BackColor = System.Drawing.Color.BurlyWood;
-            this.btnCancelProduct.Location = new System.Drawing.Point(435, 128);
+            this.btnCancelProduct.Location = new System.Drawing.Point(435, 119);
             this.btnCancelProduct.Name = "btnCancelProduct";
-            this.btnCancelProduct.Size = new System.Drawing.Size(113, 34);
+            this.btnCancelProduct.Size = new System.Drawing.Size(113, 43);
             this.btnCancelProduct.TabIndex = 5;
             this.btnCancelProduct.Text = "&Cancel";
             this.btnCancelProduct.UseVisualStyleBackColor = false;
@@ -102,7 +80,7 @@ namespace Group_1_Travel_Experts
             // 
             // frmProductsAddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -110,9 +88,7 @@ namespace Group_1_Travel_Experts
             this.Controls.Add(this.btnCancelProduct);
             this.Controls.Add(this.btnOKProduct);
             this.Controls.Add(this.txtProdName);
-            this.Controls.Add(this.txtProductId);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Maroon;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -127,10 +103,7 @@ namespace Group_1_Travel_Experts
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtProductId;
         private System.Windows.Forms.TextBox txtProdName;
         private System.Windows.Forms.Button btnOKProduct;
         private System.Windows.Forms.Button btnCancelProduct;

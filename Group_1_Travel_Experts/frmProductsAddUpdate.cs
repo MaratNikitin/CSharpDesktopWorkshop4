@@ -20,8 +20,8 @@ namespace Group_1_Travel_Experts
     public partial class frmProductsAddUpdate : Form
     {
         // public data - main form needs access to it
-        public bool isAdd { get; set; } // true - Add, false - Modify
-        public Products Product { get; set; } // current product
+        public bool isAdd; // true - Add, false - Modify
+        public Products Product; // current product
         public frmProductsAddUpdate()
         {
             InitializeComponent();
@@ -29,32 +29,45 @@ namespace Group_1_Travel_Experts
 
         private void frmProductsAddUpdate_Load(object sender, EventArgs e)
         {
-            using (TravelExpertsContext db = new TravelExpertsContext())
-                if (this.isAdd)
-                {
-                    this.Text = "Add Product";
-                    txtProductId.ReadOnly = false;
-                }
-                else
-                {
-                    this.Text = "Modify Product";
-                    txtProductId.ReadOnly = true;
-                    DisplayProduct();
 
+            if (isAdd)
+            {
+                this.Text = "Add Product";
+
+            }
+            else
+            {
+                this.Text = "Modify Product";
+
+
+
+
+                try
+                {
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        txtProdName.Text = Product.ProdName;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while retrieving product data: " + ex.Message, e.GetType().ToString());
+                }
+
+            }
         }
 
         private void btnOKProduct_Click(object sender, EventArgs e)
         {
             if (IsValidData()) 
             {
-            if (isAdd) // need to create product object
-            {
-                this.Product = new Products();//instantiated product object from class project
-            }
-
-            LoadProductData();
-            this.DialogResult = DialogResult.OK; // closes the form
+                if (isAdd) // need to create product object
+                {
+                Product = new Products();//instantiated product object from class project
+                }
+                LoadProductData();
+                //LoadProductData();
+                this.DialogResult = DialogResult.OK; // closes the form
             }
         }
 
@@ -63,20 +76,21 @@ namespace Group_1_Travel_Experts
             this.Close(); //closes the current form
         }
 
-        private void DisplayProduct()
-        {
+        //private void DisplayProduct()
+        //{
 
-
-            txtProductId.Text = Product.ProductId.ToString();
-            txtProdName.Text = Product.ProdName;
             
-        }
+        //    // txtProductId.Text = Product.ProductId.ToString();
+        //    txtProdName.Text = Product.ProdName;
+
+        //}
 
         private void LoadProductData()
         {
-            Product.ProductId = Convert.ToInt32(txtProductId.Text);
-            Product.ProdName = txtProdName.Text;
-            
+
+
+            //Product.ProductId = Convert.ToInt32(txtProductId.Text);
+            Product.ProdName = txtProdName.Text.ToUpper();
 
         }
 

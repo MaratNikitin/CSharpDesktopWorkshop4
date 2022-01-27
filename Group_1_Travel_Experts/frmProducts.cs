@@ -24,8 +24,8 @@ namespace Group_1_Travel_Experts
     {
 
         Products selectedProduct = null; // current customer
-        //private Product product; 
-        private TravelExpertsContext context = new TravelExpertsContext();
+       
+        //private TravelExpertsContext context = new TravelExpertsContext();
         public frmProducts()
         {
             InitializeComponent();
@@ -33,8 +33,8 @@ namespace Group_1_Travel_Experts
 
         private void frmProducts_Load(object sender, EventArgs e)
         {
-            using (TravelExpertsContext db = new TravelExpertsContext())
-            {
+            //using (TravelExpertsContext db = new TravelExpertsContext())
+            //{
                 
                 //var products = db.Products.Select(p => new
                 //{
@@ -58,86 +58,126 @@ namespace Group_1_Travel_Experts
                 //dgvProducts.Columns[1].Width = 200;
                 //dgvProducts.Columns[1].HeaderText = "Product Name";
 
-            }
+           //}
         }
         private void DisplayProduct()
         {
 
             dgvProducts.DataSource = null;
             dgvProducts.Columns.Clear();
-            using (TravelExpertsContext db = new TravelExpertsContext())
+            try
             {
-                var products = db.Products
-                    .OrderBy(p => p.ProductId)
-                    .Select(p => new { p.ProductId, p.ProdName })
-                    .ToList();
 
-                dgvProducts.DataSource = products.ToList();
-                // enable Modify and Delete buttons
-                btnModifyProd.Enabled = true;
-                btnDeleteProd.Enabled = true;
+                using (TravelExpertsContext db = new TravelExpertsContext())
+                {
+                    var products = db.Products
+                        .OrderBy(p => p.ProdName)
+                        .Select(p => new { p.ProductId, p.ProdName })
+                        .ToList();
 
-                // styling the DataGridView object:
-                dgvProducts.EnableHeadersVisualStyles = false;
-                dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-                dgvProducts.Columns[0].Width = 200;
-                //dgvPructs.Coodlumns[1].Width = 400;
-                dgvProducts.Columns[0].HeaderText = "Product ID";
-                dgvProducts.Columns[1].HeaderText = "Product Name";
-                dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProducts.DataSource = products;
+                    // enable Modify and Delete buttons
+
+
+                    //var products = db.Products.Select(p => new
+                    //{
+                    //    p.ProductId,
+                    //    p.ProdName
+
+                    //}).ToList();
+                    //dgvProducts.DataSource = products;
+                    btnModifyProd.Enabled = true;
+                    btnDeleteProd.Enabled = true;
+                    btnAddProd.Enabled = true;
+
+
+
+
+
+                    // styling the DataGridView object:
+                    dgvProducts.EnableHeadersVisualStyles = false;
+                    dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
+                    dgvProducts.Columns[0].Width = 200;
+                    //dgvPructs.Coodlumns[1].Width = 400;
+                    dgvProducts.Columns[0].HeaderText = "Product ID";
+                    dgvProducts.Columns[1].HeaderText = "Product Name";
+                    dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
             }
+            catch (Exception ex)
+            {
+                HandleGeneralError(ex);
+            }
+
         }
         
         //user clicks the Add button
              
         private void btnAddProd_Click(object sender, EventArgs e)
         {
-            frmProductsAddUpdate secondForm = new frmProductsAddUpdate();
-            secondForm.isAdd = true;
-            secondForm.Product = null;
+            frmProductsAddUpdate secondForm = new frmProductsAddUpdate();//creating the instance of the product form
+            secondForm.isAdd = true;//secondform instance is true when user adds a product
+            secondForm.Product = null;//otherwise no change
 
+            
             DialogResult result = secondForm.ShowDialog(); // display second form modal
 
             if (result == DialogResult.OK) // second form has product object with data
             {
                 selectedProduct = secondForm.Product;
 
-                // add it to the database table using EF
-                try
+                using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    try
                     {
+                        int newProductId = db.Products.Max(s => s.ProductId) + 1;
+                        selectedProduct.ProductId = newProductId;
+
+                        //This code updates the database with the new entry
                         db.Products.Add(selectedProduct);
                         db.SaveChanges();
+                        dgvProducts.Columns.Clear();
                         MessageBox.Show("1 row was added to the Products table");
-                        this.DisplayProduct();
+                        DisplayProduct();
                     }
 
+
+
+                    catch (DbUpdateException ex)
+                    {
+                        this.HandleDatabaseError(ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        HandleGeneralError(ex);
+                    }
                 }
-                catch (DbUpdateException ex)
-                {
-                    this.HandleDatabaseError(ex);
-                }
-                catch (Exception ex)
-                {
-                    HandleGeneralError(ex);
-                }
-            }
+
+            }   
+            
         }
 
         private void btnModifyProd_Click(object sender, EventArgs e)
         {
+            frmProductsAddUpdate secondForm = new frmProductsAddUpdate();
+            secondForm.isAdd = false;
             //default first row selected, otherwise user can pick row from dgv
-            var selectedProduct = context.Products.Find(dgvProducts.SelectedCells[0].Value);
-            var modifysecondForm = new frmProductsAddUpdate
+            
+            //secondForm.Product = selectedProduct;
+            try
             {
-                isAdd = false,
-                Product = selectedProduct
-            };
-            modifysecondForm.isAdd = false; // it's Modify
-            modifysecondForm.Product = selectedProduct;
+                using (TravelExpertsContext db = new TravelExpertsContext())
+                {
+                    selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);
+                    secondForm.Product = selectedProduct;
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleGeneralError(ex);
+            }
 
-            DialogResult result = modifysecondForm.ShowDialog();
+            DialogResult result = secondForm.ShowDialog();
 
             if (result == DialogResult.OK) // second form has customer with new data
             {
@@ -145,18 +185,21 @@ namespace Group_1_Travel_Experts
                 {
                     using (TravelExpertsContext db = new TravelExpertsContext())
                     {
-
-                        db.Products.Update(selectedProduct);//selected row is updated
+                        
+                        db.Update(selectedProduct);//selected row is updated
                         db.SaveChanges();
-                        this.DisplayProduct();
+                        DisplayProduct();
                         // need to have object in the current  context
                         //selectedProduct= db.Products.Find(secondForm.product.ProductCode);
-                        selectedProduct = db.Products.Find((string)dgvProducts.SelectedCells[0].Value);
+                        //selectedProduct = db.Products.Find((string)dgvProducts.SelectedCells[0].Value);
+                        
                         // copy data from customer on the second form
-                        selectedProduct.ProductId = modifysecondForm.Product.ProductId;
-                        selectedProduct.ProdName = modifysecondForm.Product.ProdName;
-                        db.Products.Remove(selectedProduct);
-                        db.SaveChanges(true);
+                        //selectedProduct.ProductId = secondForm.Product.ProductId;
+                        //selectedProduct.ProdName = secondForm.Product.ProdName;
+                        //db.Products.Remove(selectedProduct);
+                        //db.SaveChanges(true);
+                        //selectedSupplier = db.Suppliers.Find(dataGridViewSuppliers.SelectedCells[0].Value); // the selected row from DataGridView is found in the DB
+                        //secondForm.supplier = selectedSupplier;
 
                     }
                 }
@@ -177,7 +220,8 @@ namespace Group_1_Travel_Experts
 
         private void btnDeleteProd_Click(object sender, EventArgs e)
         {
-            var selectedProduct = context.Products.Find(dgvProducts.SelectedCells[0].Value);//user picks the row that will be deleted
+            using TravelExpertsContext db = new TravelExpertsContext();
+            selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);//user picks the row that will be deleted
             //DialogResult result = MessageBox.Show($"Are you sure you want to delete this entry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             DialogResult result = MessageBox.Show("Delete " + selectedProduct.ProdName + "?",
                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -186,8 +230,8 @@ namespace Group_1_Travel_Experts
 
                 try
                 {
-                    context.Products.Remove(selectedProduct); // row deleted
-                    context.SaveChanges(); // changes saved
+                    db.Products.Remove(selectedProduct); // row deleted
+                    db.SaveChanges(); // changes saved
                     MessageBox.Show("1 row was deleted", "Good Job!");
                     DisplayProduct();
                 }
@@ -212,15 +256,15 @@ namespace Group_1_Travel_Experts
             Application.Exit();
         }
 
-        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DisplayProduct();
-        }
+        //private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    DisplayProduct();
+        //}
 
         private void HandleDatabaseError(DbUpdateException ex)
         {
             string errorMessage = "";
-            var sqlException = (SqlException)ex.InnerException;
+            SqlException sqlException = (SqlException)ex.InnerException;
             foreach (SqlError error in sqlException.Errors)
             {
                 errorMessage += "ERROR CODE:  " + error.Number + " " +
@@ -242,9 +286,10 @@ namespace Group_1_Travel_Experts
         /// <param name="ex"></param>
         private void HandleConcurrencyError(DbUpdateConcurrencyException ex)
         {
+            using TravelExpertsContext db = new TravelExpertsContext();
             ex.Entries.Single().Reload();
 
-            var state = context.Entry(selectedProduct).State;
+            var state = db.Entry(selectedProduct).State;
             if (state == EntityState.Detached)
             {
                 MessageBox.Show("Another user has deleted that product.",
