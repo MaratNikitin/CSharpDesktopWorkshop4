@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
