@@ -78,14 +78,6 @@ namespace Group_1_Travel_Experts
                     dgvProducts.DataSource = products;
                     // enable Modify and Delete buttons
 
-
-                    //var products = db.Products.Select(p => new
-                    //{
-                    //    p.ProductId,
-                    //    p.ProdName
-
-                    //}).ToList();
-                    //dgvProducts.DataSource = products;
                     btnModifyProd.Enabled = true;
                     btnDeleteProd.Enabled = true;
                     btnAddProd.Enabled = true;
@@ -130,8 +122,8 @@ namespace Group_1_Travel_Experts
                 {
                     try
                     {
-                        int newProductId = db.Products.Max(s => s.ProductId) + 1;
-                        selectedProduct.ProductId = newProductId;
+                        
+                        
 
                         //This code updates the database with the new entry
                         db.Products.Add(selectedProduct);
