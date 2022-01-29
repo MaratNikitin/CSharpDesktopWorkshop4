@@ -188,8 +188,8 @@ namespace Group_1_Travel_Experts
                 dataGridViewPackages.Columns["PkgEndDate"].Width = 120;
                 dataGridViewPackages.Columns["PkgDesc"].Width = 440;
                 dataGridViewPackages.Columns["PkgBasePrice"].Width = 120;
-                dataGridViewPackages.Columns["PkgAgencyCommission"].Width = 120;
-
+                dataGridViewPackages.Columns["PkgAgencyCommission"].Width = 125;
+                
                 // setting displayed data formats:
                 dataGridViewPackages.Columns["PkgStartDate"].DefaultCellStyle.Format = "MMM. dd, yyyy"; // setting desired package start date format
                 dataGridViewPackages.Columns["PkgEndDate"].DefaultCellStyle.Format = "MMM. dd, yyyy"; // setting desired package end date format

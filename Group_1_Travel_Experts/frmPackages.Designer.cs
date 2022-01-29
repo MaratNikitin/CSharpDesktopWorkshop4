@@ -56,7 +56,6 @@ namespace Group_1_Travel_Experts
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonAdd.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonAdd.ForeColor = System.Drawing.Color.Maroon;
             this.buttonAdd.Location = new System.Drawing.Point(265, 361);
@@ -69,7 +68,6 @@ namespace Group_1_Travel_Experts
             // 
             // buttonModify
             // 
-            this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModify.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonModify.ForeColor = System.Drawing.Color.Maroon;
             this.buttonModify.Location = new System.Drawing.Point(512, 359);
@@ -82,7 +80,6 @@ namespace Group_1_Travel_Experts
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonRemove.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonRemove.ForeColor = System.Drawing.Color.Maroon;
             this.buttonRemove.Location = new System.Drawing.Point(794, 359);
@@ -111,9 +108,6 @@ namespace Group_1_Travel_Experts
             this.dataGridViewPackages.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Bisque;
             this.dataGridViewPackages.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewPackages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPackages.BackgroundColor = System.Drawing.Color.Linen;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
@@ -158,9 +152,7 @@ namespace Group_1_Travel_Experts
             this.dataGridViewProducts.AllowUserToOrderColumns = true;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Bisque;
             this.dataGridViewProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.Linen;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Bisque;
@@ -201,7 +193,7 @@ namespace Group_1_Travel_Experts
             // 
             // buttonAddProduct
             // 
-            this.buttonAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddProduct.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonAddProduct.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonAddProduct.ForeColor = System.Drawing.Color.Maroon;
@@ -215,7 +207,7 @@ namespace Group_1_Travel_Experts
             // 
             // buttonRemoveProduct
             // 
-            this.buttonRemoveProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRemoveProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRemoveProduct.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonRemoveProduct.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonRemoveProduct.ForeColor = System.Drawing.Color.Maroon;
@@ -240,6 +232,7 @@ namespace Group_1_Travel_Experts
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

@@ -212,7 +212,7 @@ namespace Group_1_Travel_Experts
         //User selects Cancel
         private void btnCancelProd_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
       

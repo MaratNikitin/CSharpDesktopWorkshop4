@@ -67,5 +67,10 @@ namespace Group_1_Travel_Experts
                 this.DialogResult = DialogResult.OK; // close the form
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
