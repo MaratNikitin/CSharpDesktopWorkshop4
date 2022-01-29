@@ -25,7 +25,7 @@ namespace Group_1_Travel_Experts
 
         Products selectedProduct = null; // current customer
        
-        //private TravelExpertsContext context = new TravelExpertsContext();
+        
         public frmProducts()
         {
             InitializeComponent();
@@ -33,58 +33,33 @@ namespace Group_1_Travel_Experts
 
         private void frmProducts_Load(object sender, EventArgs e)
         {
-            //using (TravelExpertsContext db = new TravelExpertsContext())
-            //{
-                
-                //var products = db.Products.Select(p => new
-                //{
-                //    p.ProductId,
-                //    p.ProdName
-                   
-                //}).ToList();
-                //dgvProducts.DataSource = products;
-                DisplayProduct(); // DRY - all code with DGV styling should be there
-                // format headers
-                
-
-                // format alternating rows
-                
-
-                // format the columns
-                //dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-                //dgvProducts.Columns[0].HeaderText = "Product ID";
-
-                //dgvProducts.Columns[1].Width = 200;
-                //dgvProducts.Columns[1].HeaderText = "Product Name";
-
-           //}
+            
+                DisplayProduct(); //using this method to generate the data for the data grid view
         }
+        //method queries the data from the travel experts database and displays it.
         private void DisplayProduct()
         {
-
+            //code below clears the data grid view data 
             dgvProducts.DataSource = null;
             dgvProducts.Columns.Clear();
             try
             {
-
+                //accessing the travel experts database
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
+                    //linq query to produce the data
                     var products = db.Products
                         .OrderBy(p => p.ProdName)
                         .Select(p => new { p.ProductId, p.ProdName })
                         .ToList();
 
+                    //linq query data gets assigned
                     dgvProducts.DataSource = products;
                     // enable Modify and Delete buttons
 
                     btnModifyProd.Enabled = true;
                     btnDeleteProd.Enabled = true;
                     btnAddProd.Enabled = true;
-
-
-
-
 
                     // styling the DataGridView object:
                     dgvProducts.EnableHeadersVisualStyles = false;
@@ -104,7 +79,6 @@ namespace Group_1_Travel_Experts
         }
         
         //user clicks the Add button
-             
         private void btnAddProd_Click(object sender, EventArgs e)
         {
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();//creating the instance of the product form
@@ -114,10 +88,12 @@ namespace Group_1_Travel_Experts
             
             DialogResult result = secondForm.ShowDialog(); // display second form modal
 
-            if (result == DialogResult.OK) // second form has product object with data
+            if (result == DialogResult.OK) 
             {
-                selectedProduct = secondForm.Product;
-
+                
+                selectedProduct = secondForm.Product; //product data is loaded into the form
+                
+                //accessing the travel experts database
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
                     try
@@ -151,17 +127,17 @@ namespace Group_1_Travel_Experts
 
         private void btnModifyProd_Click(object sender, EventArgs e)
         {
-            frmProductsAddUpdate secondForm = new frmProductsAddUpdate();
-            secondForm.isAdd = false;
-            //default first row selected, otherwise user can pick row from dgv
+            frmProductsAddUpdate secondForm = new frmProductsAddUpdate();  //new instance of the frm is created
+            secondForm.isAdd = false; //not adding data, modifying it
             
-            //secondForm.Product = selectedProduct;
+           
             try
             {
+                //accessing the travel experts database
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);
-                    secondForm.Product = selectedProduct;
+                    selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);//select the value to be modified
+                    secondForm.Product = selectedProduct;//assign selected value to the form
                 }
             }
             catch (Exception ex)
@@ -169,30 +145,20 @@ namespace Group_1_Travel_Experts
                 HandleGeneralError(ex);
             }
 
-            DialogResult result = secondForm.ShowDialog();
+            DialogResult result = secondForm.ShowDialog();//form is generated
 
             if (result == DialogResult.OK) // second form has customer with new data
             {
                 try
                 {
+                    //accessing the travel experts database
                     using (TravelExpertsContext db = new TravelExpertsContext())
                     {
                         
                         db.Update(selectedProduct);//selected row is updated
                         db.SaveChanges();
                         DisplayProduct();
-                        // need to have object in the current  context
-                        //selectedProduct= db.Products.Find(secondForm.product.ProductCode);
-                        //selectedProduct = db.Products.Find((string)dgvProducts.SelectedCells[0].Value);
                         
-                        // copy data from customer on the second form
-                        //selectedProduct.ProductId = secondForm.Product.ProductId;
-                        //selectedProduct.ProdName = secondForm.Product.ProdName;
-                        //db.Products.Remove(selectedProduct);
-                        //db.SaveChanges(true);
-                        //selectedSupplier = db.Suppliers.Find(dataGridViewSuppliers.SelectedCells[0].Value); // the selected row from DataGridView is found in the DB
-                        //secondForm.supplier = selectedSupplier;
-
                     }
                 }
                 catch (DbUpdateConcurrencyException ex)
@@ -212,9 +178,10 @@ namespace Group_1_Travel_Experts
 
         private void btnDeleteProd_Click(object sender, EventArgs e)
         {
+            //accessing the travel experts database
             using TravelExpertsContext db = new TravelExpertsContext();
             selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);//user picks the row that will be deleted
-            //DialogResult result = MessageBox.Show($"Are you sure you want to delete this entry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
             DialogResult result = MessageBox.Show("Delete " + selectedProduct.ProdName + "?",
                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -242,16 +209,17 @@ namespace Group_1_Travel_Experts
                 }
             }
         }
-
+        //User selects Cancel
         private void btnCancelProd_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        //private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    DisplayProduct();
-        //}
+      
+        /// <summary>
+        /// Below are handling error methods for the catch exceptions
+        /// </summary>
+        /// <param name="ex"></param>
 
         private void HandleDatabaseError(DbUpdateException ex)
         {
@@ -264,18 +232,12 @@ namespace Group_1_Travel_Experts
             }
             MessageBox.Show(errorMessage);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ex"></param>
+      
         private void HandleGeneralError(Exception ex)
         {
             MessageBox.Show(ex.Message, ex.GetType().ToString());
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ex"></param>
+       
         private void HandleConcurrencyError(DbUpdateConcurrencyException ex)
         {
             using TravelExpertsContext db = new TravelExpertsContext();

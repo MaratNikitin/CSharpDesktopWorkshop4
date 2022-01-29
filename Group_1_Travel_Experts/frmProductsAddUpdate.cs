@@ -27,26 +27,27 @@ namespace Group_1_Travel_Experts
             InitializeComponent();
         }
 
+        //form is loaded
         private void frmProductsAddUpdate_Load(object sender, EventArgs e)
         {
 
             if (isAdd)
             {
-                this.Text = "Add Product";
+                this.Text = "Add Product"; //form is labelled add product if add button is pressed
 
             }
             else
             {
-                this.Text = "Modify Product";
+                this.Text = "Modify Product"; //form is labelled modify if modify button in main form is pressed
 
 
 
 
                 try
                 {
-                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    using (TravelExpertsContext db = new TravelExpertsContext()) //access the database to get the data
                     {
-                        txtProdName.Text = Product.ProdName;
+                        txtProdName.Text = Product.ProdName; //selected data is displayed
                     }
                 }
                 catch (Exception ex)
@@ -56,7 +57,7 @@ namespace Group_1_Travel_Experts
 
             }
         }
-
+        //ok button is pressed
         private void btnOKProduct_Click(object sender, EventArgs e)
         {
             if (IsValidData()) 
@@ -65,35 +66,27 @@ namespace Group_1_Travel_Experts
                 {
                 Product = new Products();//instantiated product object from class project
                 }
-                LoadProductData();
+                LoadProductData(); 
                 //LoadProductData();
                 this.DialogResult = DialogResult.OK; // closes the form
             }
         }
 
+        //cancel button is pressed
         private void btnCancelProduct_Click(object sender, EventArgs e)
         {
             this.Close(); //closes the current form
         }
 
-        //private void DisplayProduct()
-        //{
-
-            
-        //    // txtProductId.Text = Product.ProductId.ToString();
-        //    txtProdName.Text = Product.ProdName;
-
-        //}
-
+        //data is loaded into the product object to be inserted into the main form
         private void LoadProductData()
         {
 
-
-            //Product.ProductId = Convert.ToInt32(txtProductId.Text);
-            Product.ProdName = txtProdName.Text.ToUpper();
+            Product.ProdName = txtProdName.Text.ToUpper(); //loads data to be put into the main data grid view
 
         }
 
+        //method using validator
         private bool IsValidData()
         {
             bool success = true;
