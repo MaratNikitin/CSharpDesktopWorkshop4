@@ -59,25 +59,6 @@ namespace Group_1_Travel_Experts
         {
             this.Close(); // it closes the Main window which leads to closing the app
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxTables_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelWelcome_Click(object sender, EventArgs e)
-        {
-
-        }
+                
     }
 }

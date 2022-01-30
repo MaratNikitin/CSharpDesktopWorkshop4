@@ -6,6 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+/*
+ * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
+ * It is the main form of the application where a user selects which of the database's table to work with
+ * Author: Jacky Luong
+ * SAIT, OOSD course, CPRG-207 - Threaded Project (Part 2), Workshop #4 - C#.NET, Group 1
+ * When: January-February 2022
+ */
+
 namespace Group_1_Travel_Experts
 {
     public partial class frmProductsSuppliers : Form

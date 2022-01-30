@@ -71,7 +71,6 @@ namespace Group_1_Travel_Experts
             this.groupBoxTables.Size = new System.Drawing.Size(292, 166);
             this.groupBoxTables.TabIndex = 1;
             this.groupBoxTables.TabStop = false;
-            this.groupBoxTables.Enter += new System.EventHandler(this.groupBoxTables_Enter);
             // 
             // radioButtonProductsSuppliers
             // 
@@ -136,7 +135,6 @@ namespace Group_1_Travel_Experts
             this.pictureBoxMainForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMainForm.TabIndex = 7;
             this.pictureBoxMainForm.TabStop = false;
-            this.pictureBoxMainForm.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // labelWelcome
             // 
@@ -149,7 +147,6 @@ namespace Group_1_Travel_Experts
             this.labelWelcome.Size = new System.Drawing.Size(252, 25);
             this.labelWelcome.TabIndex = 2;
             this.labelWelcome.Text = "Welcome To Travel Experts!";
-            this.labelWelcome.Click += new System.EventHandler(this.labelWelcome_Click);
             // 
             // buttonOpen
             // 
@@ -197,7 +194,6 @@ namespace Group_1_Travel_Experts
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts - Main Window";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBoxTables.ResumeLayout(false);
             this.groupBoxTables.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMainForm)).EndInit();
