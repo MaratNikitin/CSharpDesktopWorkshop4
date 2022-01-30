@@ -58,12 +58,18 @@ namespace Group_1_Travel_Experts
             {
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    var SupplierQuery = (from productSupplier in db.ProductsSuppliers
-                                         join supplier in db.Suppliers
-                                             on productSupplier.SupplierId equals supplier.SupplierId
-                                         join product in db.Products
-                                             on productSupplier.ProductId equals product.ProductId
-                                         where product.ProdName != selectedProductName &&
+                    var SupplierQuery = (from supplier in db.Suppliers
+                                         join productSupplier in db.ProductsSuppliers // left join product_Supplier
+                                             on supplier.SupplierId equals productSupplier.SupplierId
+                                             into prodSupGroup
+                                         from supGroup in prodSupGroup.DefaultIfEmpty()
+
+                                         join product in db.Products // left join products
+                                             on supGroup.ProductId equals product.ProductId
+                                             into prodGroup
+                                         from pGroup in prodGroup.DefaultIfEmpty()
+
+                                         where pGroup.ProdName != selectedProductName &&
                                                 // filters suppliers by characters in text box
                                                 supplier.SupName.ToUpper().IndexOf(txtSearch.Text.ToUpper()) > -1 &&
                                                 // filters suppliers by the first character in the text box
@@ -86,12 +92,18 @@ namespace Group_1_Travel_Experts
         {
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
-                var SupplierQuery = (from productSupplier in db.ProductsSuppliers
-                                     join supplier in db.Suppliers
-                                         on productSupplier.SupplierId equals supplier.SupplierId
-                                     join product in db.Products
-                                         on productSupplier.ProductId equals product.ProductId
-                                     where product.ProdName != selectedProductName
+                var SupplierQuery = (from supplier in db.Suppliers
+                                     join productSupplier in db.ProductsSuppliers // left join product_Supplier
+                                         on supplier.SupplierId equals productSupplier.SupplierId 
+                                         into prodSupGroup 
+                                     from supGroup in prodSupGroup.DefaultIfEmpty()
+
+                                     join product in db.Products // left join products
+                                         on supGroup.ProductId equals product.ProductId
+                                         into prodGroup 
+                                     from pGroup in prodGroup.DefaultIfEmpty()
+
+                                     where pGroup.ProdName != selectedProductName
                                      orderby supplier.SupName
                                      select new { supplier.SupName }).ToList();
 
