@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
@@ -66,8 +67,13 @@ namespace Group_1_Travel_Experts
                 {
                 Product = new Products();//instantiated product object from class project
                 }
-                LoadProductData(); 
+                LoadProductData();
                 //LoadProductData();
+
+                // set the product name to title case
+                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                Product.ProdName = textInfo.ToTitleCase(txtProdName.Text.ToString().ToLower());
+
                 this.DialogResult = DialogResult.OK; // closes the form
             }
         }

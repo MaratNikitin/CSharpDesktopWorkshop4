@@ -128,6 +128,7 @@ namespace Group_1_Travel_Experts
             this.dataGridViewPackages.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPackages.Location = new System.Drawing.Point(32, 24);
             this.dataGridViewPackages.Name = "dataGridViewPackages";
+            this.dataGridViewPackages.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Bisque;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
