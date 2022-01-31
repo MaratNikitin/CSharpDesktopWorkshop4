@@ -127,15 +127,17 @@ namespace Group_1_Travel_Experts
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();  //new instance of the frm is created
             secondForm.isAdd = false; //not adding data, modifying it
             
-           
             try
             {
                 //accessing the travel experts database
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);//select the value to be modified
-                    secondForm.Product = selectedProduct;//assign selected value to the form
+                    var selectedQuery = (from product in db.Products
+                                         where product.ProdName == dgvProducts.SelectedCells[0].Value.ToString()
+                                         select new { product }).Single();
+                    selectedProduct = selectedQuery.product;// get selected product
                 }
+                secondForm.Product = selectedProduct; //bring selected product to second form
             }
             catch (Exception ex)
             {
@@ -175,10 +177,22 @@ namespace Group_1_Travel_Experts
 
         private void btnDeleteProd_Click(object sender, EventArgs e)
         {
-            //accessing the travel experts database
-            using TravelExpertsContext db = new TravelExpertsContext();
-            selectedProduct = db.Products.Find(dgvProducts.SelectedCells[0].Value);//user picks the row that will be deleted
-            
+            try
+            {
+                //accessing the travel experts database
+                using (TravelExpertsContext db = new TravelExpertsContext())
+                {
+                    var selectedQuery = (from product in db.Products
+                                         where product.ProdName == dgvProducts.SelectedCells[0].Value.ToString()
+                                         select new { product }).Single();
+                    selectedProduct = selectedQuery.product;
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleGeneralError(ex);
+            }
+
             DialogResult result = MessageBox.Show("Delete " + selectedProduct.ProdName + "?",
                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -186,10 +200,13 @@ namespace Group_1_Travel_Experts
 
                 try
                 {
-                    db.Products.Remove(selectedProduct); // row deleted
-                    db.SaveChanges(); // changes saved
-                    MessageBox.Show("1 row was deleted", "Good Job!");
-                    DisplayProduct();
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        db.Products.Remove(selectedProduct); // row deleted
+                        db.SaveChanges(); // changes saved
+                        MessageBox.Show("1 row was deleted", "Good Job!");
+                        DisplayProduct();
+                    }
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
