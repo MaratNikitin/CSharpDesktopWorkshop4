@@ -145,7 +145,7 @@ namespace Group_1_Travel_Experts
                         {
                             // find the selected row from the DataGridView in the DB
                             var selectedQuery = (from supplier in db.Suppliers
-                                                 where supplier.SupName == dataGridViewSuppliers.SelectedCells[0].Value.ToString()
+                                                 where supplier.SupplierId == (int)dataGridViewSuppliers.SelectedCells[0].Value
                                                  select new { supplier }).Single();
 
                             // delete the supplier and save the changes
