@@ -50,9 +50,9 @@ namespace Group_1_Travel_Experts
                     //linq query to produce the data
                     var products = db.Products
                         .OrderBy(p => p.ProdName)
-                        .Select(p => new { p.ProductId, p.ProdName })
+                        .Select(p => new { p.ProdName })
                         .ToList();
-
+                    //p.ProductId,
                     //linq query data gets assigned
                     dgvProducts.DataSource = products;
                     // enable Modify and Delete buttons
@@ -64,11 +64,9 @@ namespace Group_1_Travel_Experts
                     // styling the DataGridView object:
                     dgvProducts.EnableHeadersVisualStyles = false;
                     dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-                    dgvProducts.Columns[0].Width = 200;
-                    //dgvPructs.Coodlumns[1].Width = 400;
-                    dgvProducts.Columns[0].HeaderText = "Product ID";
-                    dgvProducts.Columns[1].HeaderText = "Product Name";
-                    dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    
+                    dgvProducts.Columns[0].HeaderText = "Product Name";
+                    dgvProducts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -100,7 +98,6 @@ namespace Group_1_Travel_Experts
                     {
                         
                         
-
                         //This code updates the database with the new entry
                         db.Products.Add(selectedProduct);
                         db.SaveChanges();
