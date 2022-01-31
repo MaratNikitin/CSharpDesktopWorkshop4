@@ -39,10 +39,12 @@ namespace Group_1_Travel_Experts
             // textBoxSupplierName
             // 
             this.textBoxSupplierName.BackColor = System.Drawing.Color.Linen;
+            this.textBoxSupplierName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxSupplierName.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxSupplierName.Location = new System.Drawing.Point(162, 51);
             this.textBoxSupplierName.MaxLength = 50;
             this.textBoxSupplierName.Name = "textBoxSupplierName";
+            this.textBoxSupplierName.PlaceholderText = "50 characters maximum";
             this.textBoxSupplierName.Size = new System.Drawing.Size(542, 29);
             this.textBoxSupplierName.TabIndex = 0;
             this.textBoxSupplierName.Tag = "Supplier Name";
