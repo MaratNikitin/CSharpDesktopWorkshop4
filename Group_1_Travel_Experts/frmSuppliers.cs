@@ -79,43 +79,46 @@ namespace Group_1_Travel_Experts
             secondForm.isAdd = false; // we want to modify
 
             // find the DataGridView selected row in the db and set the supplier value on the second form to it
-            try
+            using (TravelExpertsContext db = new TravelExpertsContext())
             {
-                using (TravelExpertsContext db = new TravelExpertsContext())
+                try
                 {
-                    selectedSupplier = db.Suppliers.Find(dataGridViewSuppliers.SelectedCells[0].Value); // the selected row from DataGridView is found in the DB
-                    secondForm.supplier = selectedSupplier;
+                    // find the selected row from the DataGridView in the DB
+                    selectedSupplier = db.Suppliers.Find(dataGridViewSuppliers.SelectedCells[0].Value); 
+
+                    secondForm.supplier = selectedSupplier; //set the supplier value on the second form 
+                }
+                // catch any exceptions
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
                 }
             }
-            // catch any exceptions
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
-            }
 
-            DialogResult result = secondForm.ShowDialog(); // Displays the second form as a modal
+            // Display the second form
+            DialogResult result = secondForm.ShowDialog(); 
 
             // the user has submitted the modifications
             if (result == DialogResult.OK)
             {
                 // update the supplier in the database
-                try
+                using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    try
                     {
                         db.Update(selectedSupplier);
                         db.SaveChanges();
                         RefreshDataGridViewSuppliers(); // refresh the datagridview
                     }
-                }
-                // catch any exceptions
-                catch (DbUpdateException ex)
-                {
-                    this.HandleDbUpdateException(ex);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
+                    // catch any exceptions
+                    catch (DbUpdateException ex)
+                    {
+                        this.HandleDbUpdateException(ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
+                    }
                 }
             }
         }
@@ -126,33 +129,41 @@ namespace Group_1_Travel_Experts
             // check if a row is selected
             if (dataGridViewSuppliers.SelectedRows.Count > 0)
             {
-                try
+                int selecedRowIndex = dataGridViewSuppliers.SelectedCells[0].RowIndex; // get row index
+                DataGridViewRow selectedRow = dataGridViewSuppliers.Rows[selecedRowIndex]; // get row from selected cell
+
+                // Get the user to confirm they want to delete the selected supplier
+                DialogResult confirmation = MessageBox.Show($"Are you sure you want to delete this supplier: {selectedRow.Cells["SupName"].Value}?", 
+                                            "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmation == DialogResult.Yes) // the user says yes
                 {
+                    // create a new instance of the db
                     using (TravelExpertsContext db = new TravelExpertsContext())
                     {
-                        // find the selected row from the DataGridView in the DB
-                        selectedSupplier = db.Suppliers.Find(dataGridViewSuppliers.SelectedCells[0].Value); 
-                        // Get the user to confirm they want to delete the selected supplier
-                        DialogResult confirmation = MessageBox.Show($"Are you sure you want to delete {selectedSupplier.SupName}?", "Confirm Delete",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                        if (confirmation == DialogResult.Yes) // the user says yes
+                        try
                         {
+                            // find the selected row from the DataGridView in the DB
+                            var selectedQuery = (from supplier in db.Suppliers
+                                                 where supplier.SupName == dataGridViewSuppliers.SelectedCells[0].Value.ToString()
+                                                 select new { supplier }).Single();
+
                             // delete the supplier and save the changes
-                            db.Suppliers.Remove(selectedSupplier);
+                            db.Suppliers.Remove(selectedQuery.supplier);
                             db.SaveChanges();
+                            MessageBox.Show("1 row was deleted");
                             RefreshDataGridViewSuppliers(); // refresh the datagridview
                         }
+                        // catch any exceptions
+                        catch (DbUpdateException ex)
+                        {
+                            this.HandleDbUpdateException(ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
+                        }
                     }
-                }
-                // catch any exceptions
-                catch (DbUpdateException ex)
-                {
-                    this.HandleDbUpdateException(ex);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error while getting the supplier's data: " + ex.Message, ex.GetType().ToString());
                 }
             }
             // no row was selected
