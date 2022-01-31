@@ -186,6 +186,7 @@ namespace Group_1_Travel_Experts
                 {
                     var suppliers = db.Suppliers.Select(s => new
                     {
+                        s.SupplierId,
                         s.SupName
                     }).OrderBy(s => s.SupName).ToList();
 
@@ -202,7 +203,8 @@ namespace Group_1_Travel_Experts
                     dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
 
                     // Resize the columns
-                    dataGridViewSuppliers.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewSuppliers.Columns[0].Visible = false; // hide the SupplierId column
+                    dataGridViewSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
