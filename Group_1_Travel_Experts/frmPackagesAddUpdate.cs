@@ -85,12 +85,12 @@ namespace Group_1_Travel_Experts
             errorMessage += Validator.IsPresent(textBoxPackageStartDate.Text, textBoxPackageStartDate.Tag.ToString());
             errorMessage += Validator.IsPresent(textBoxPackageEndDate.Text, textBoxPackageEndDate.Tag.ToString());
             errorMessage += Validator.IsPresent(textBoxDescription.Text, textBoxDescription.Tag.ToString());
-            errorMessage += Validator.IsPresent(textBoxBasePrice.Text, textBoxBasePrice.Tag.ToString());
-            errorMessage += Validator.IsPresent(textBoxAgencyCommission.Text, textBoxAgencyCommission.Tag.ToString());
+            //errorMessage += Validator.IsPresent(textBoxBasePrice.Text, textBoxBasePrice.Tag.ToString());
+            //errorMessage += Validator.IsPresent(textBoxAgencyCommission.Text, textBoxAgencyCommission.Tag.ToString());
                      
             // checking if the textboxes for base price and agency commission contain a decimal number:
-            errorMessage += Validator.IsDecimal(textBoxBasePrice.Text, textBoxBasePrice.Tag.ToString());
-            errorMessage += Validator.IsDecimal(textBoxAgencyCommission.Text, textBoxAgencyCommission.Tag.ToString());
+            errorMessage += Validator.IsPositiveDecimal(textBoxBasePrice.Text, textBoxBasePrice.Tag.ToString());
+            errorMessage += Validator.IsPositiveDecimal(textBoxAgencyCommission.Text, textBoxAgencyCommission.Tag.ToString());
 
             // checking if the textboxes for package start and end date contain valid date values:
             errorMessage += Validator.IsValidDate(textBoxPackageStartDate.Text, textBoxPackageStartDate.Tag.ToString());

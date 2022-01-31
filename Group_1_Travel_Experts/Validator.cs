@@ -54,12 +54,16 @@ namespace Group_1_Travel_Experts
         /// <param name="value"> Value from a control to be validated </param>
         /// <param name="name"> Tag name of the control </param>
         /// <returns> A message string for a user reminding that a decimal number is needed </returns>
-        public static string IsDecimal(string value, string name)
+        public static string IsPositiveDecimal(string value, string name)
         {
             string msg = "";
             if (!Decimal.TryParse(value, out _))
             {
                 msg += name + " must be a valid decimal value." + LineEnd;
+            }
+            else if (Convert.ToDecimal(value) <= 0)
+            {
+                msg += name + " must be a positive value." + LineEnd;
             }
             return msg;
         }
