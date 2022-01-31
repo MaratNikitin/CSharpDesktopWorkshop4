@@ -78,7 +78,7 @@ namespace Group_1_Travel_Experts
             this.labelPackageName.BackColor = System.Drawing.Color.Transparent;
             this.labelPackageName.Location = new System.Drawing.Point(35, 50);
             this.labelPackageName.Name = "labelPackageName";
-            this.labelPackageName.Size = new System.Drawing.Size(157, 28);
+            this.labelPackageName.Size = new System.Drawing.Size(128, 21);
             this.labelPackageName.TabIndex = 7;
             this.labelPackageName.Text = "Package Name:";
             // 
@@ -88,7 +88,7 @@ namespace Group_1_Travel_Experts
             this.labelStartDate.BackColor = System.Drawing.Color.Transparent;
             this.labelStartDate.Location = new System.Drawing.Point(35, 105);
             this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(199, 28);
+            this.labelStartDate.Size = new System.Drawing.Size(158, 21);
             this.labelStartDate.TabIndex = 8;
             this.labelStartDate.Text = "Package Start Date:";
             // 
@@ -98,7 +98,7 @@ namespace Group_1_Travel_Experts
             this.labelEndDate.BackColor = System.Drawing.Color.Transparent;
             this.labelEndDate.Location = new System.Drawing.Point(35, 156);
             this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(187, 28);
+            this.labelEndDate.Size = new System.Drawing.Size(151, 21);
             this.labelEndDate.TabIndex = 9;
             this.labelEndDate.Text = "Package End Date:";
             // 
@@ -108,7 +108,7 @@ namespace Group_1_Travel_Experts
             this.labeDescription.BackColor = System.Drawing.Color.Transparent;
             this.labeDescription.Location = new System.Drawing.Point(35, 208);
             this.labeDescription.Name = "labeDescription";
-            this.labeDescription.Size = new System.Drawing.Size(126, 28);
+            this.labeDescription.Size = new System.Drawing.Size(102, 21);
             this.labeDescription.TabIndex = 10;
             this.labeDescription.Text = "Description:";
             // 
@@ -118,7 +118,7 @@ namespace Group_1_Travel_Experts
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(35, 260);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 28);
+            this.label1.Size = new System.Drawing.Size(126, 21);
             this.label1.TabIndex = 11;
             this.label1.Text = "Base Price (C$):";
             // 
@@ -128,7 +128,7 @@ namespace Group_1_Travel_Experts
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(37, 314);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 28);
+            this.label2.Size = new System.Drawing.Size(204, 21);
             this.label2.TabIndex = 12;
             this.label2.Text = "Agency Commission (C$):";
             // 
@@ -139,7 +139,8 @@ namespace Group_1_Travel_Experts
             this.textBoxAgencyCommission.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxAgencyCommission.Location = new System.Drawing.Point(294, 311);
             this.textBoxAgencyCommission.Name = "textBoxAgencyCommission";
-            this.textBoxAgencyCommission.Size = new System.Drawing.Size(284, 34);
+            this.textBoxAgencyCommission.PlaceholderText = "Number only";
+            this.textBoxAgencyCommission.Size = new System.Drawing.Size(284, 29);
             this.textBoxAgencyCommission.TabIndex = 6;
             this.textBoxAgencyCommission.Tag = "Agency Commission";
             // 
@@ -150,7 +151,8 @@ namespace Group_1_Travel_Experts
             this.textBoxBasePrice.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxBasePrice.Location = new System.Drawing.Point(294, 257);
             this.textBoxBasePrice.Name = "textBoxBasePrice";
-            this.textBoxBasePrice.Size = new System.Drawing.Size(284, 34);
+            this.textBoxBasePrice.PlaceholderText = "Number only";
+            this.textBoxBasePrice.Size = new System.Drawing.Size(284, 29);
             this.textBoxBasePrice.TabIndex = 5;
             this.textBoxBasePrice.Tag = "Base Price";
             // 
@@ -160,8 +162,10 @@ namespace Group_1_Travel_Experts
             this.textBoxDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxDescription.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxDescription.Location = new System.Drawing.Point(294, 205);
+            this.textBoxDescription.MaxLength = 50;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(284, 34);
+            this.textBoxDescription.PlaceholderText = "50 characters maximum";
+            this.textBoxDescription.Size = new System.Drawing.Size(284, 29);
             this.textBoxDescription.TabIndex = 4;
             this.textBoxDescription.Tag = "Description";
             // 
@@ -171,8 +175,10 @@ namespace Group_1_Travel_Experts
             this.textBoxPackageName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxPackageName.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxPackageName.Location = new System.Drawing.Point(294, 47);
+            this.textBoxPackageName.MaxLength = 50;
             this.textBoxPackageName.Name = "textBoxPackageName";
-            this.textBoxPackageName.Size = new System.Drawing.Size(284, 34);
+            this.textBoxPackageName.PlaceholderText = "50 charachters maximum";
+            this.textBoxPackageName.Size = new System.Drawing.Size(284, 29);
             this.textBoxPackageName.TabIndex = 1;
             this.textBoxPackageName.Tag = "Package Name";
             // 
@@ -183,7 +189,8 @@ namespace Group_1_Travel_Experts
             this.textBoxPackageStartDate.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxPackageStartDate.Location = new System.Drawing.Point(294, 102);
             this.textBoxPackageStartDate.Name = "textBoxPackageStartDate";
-            this.textBoxPackageStartDate.Size = new System.Drawing.Size(284, 34);
+            this.textBoxPackageStartDate.PlaceholderText = "YYYY-MM-DD";
+            this.textBoxPackageStartDate.Size = new System.Drawing.Size(284, 29);
             this.textBoxPackageStartDate.TabIndex = 2;
             this.textBoxPackageStartDate.Tag = "Package Start Date";
             // 
@@ -194,13 +201,14 @@ namespace Group_1_Travel_Experts
             this.textBoxPackageEndDate.ForeColor = System.Drawing.Color.Maroon;
             this.textBoxPackageEndDate.Location = new System.Drawing.Point(294, 153);
             this.textBoxPackageEndDate.Name = "textBoxPackageEndDate";
-            this.textBoxPackageEndDate.Size = new System.Drawing.Size(284, 34);
+            this.textBoxPackageEndDate.PlaceholderText = "YYYY-MM-DD";
+            this.textBoxPackageEndDate.Size = new System.Drawing.Size(284, 29);
             this.textBoxPackageEndDate.TabIndex = 3;
             this.textBoxPackageEndDate.Tag = "Package End Date";
             // 
             // frmPackagesAddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

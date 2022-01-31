@@ -42,17 +42,20 @@ namespace Group_1_Travel_Experts
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(41, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 28);
+            this.label2.Size = new System.Drawing.Size(120, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "Product Name";
             // 
             // txtProdName
             // 
             this.txtProdName.BackColor = System.Drawing.Color.Linen;
+            this.txtProdName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtProdName.ForeColor = System.Drawing.Color.Maroon;
             this.txtProdName.Location = new System.Drawing.Point(195, 59);
+            this.txtProdName.MaxLength = 50;
             this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(353, 34);
+            this.txtProdName.PlaceholderText = "50 characters maximum";
+            this.txtProdName.Size = new System.Drawing.Size(353, 29);
             this.txtProdName.TabIndex = 3;
             this.txtProdName.Tag = "Product Name";
             // 
@@ -80,7 +83,7 @@ namespace Group_1_Travel_Experts
             // 
             // frmProductsAddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

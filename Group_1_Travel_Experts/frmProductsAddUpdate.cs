@@ -82,7 +82,7 @@ namespace Group_1_Travel_Experts
         private void LoadProductData()
         {
 
-            Product.ProdName = txtProdName.Text.ToUpper(); //loads data to be put into the main data grid view
+            Product.ProdName = txtProdName.Text; //loads data to be put into the main data grid view
 
         }
 
