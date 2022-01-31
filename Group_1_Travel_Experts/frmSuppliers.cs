@@ -186,14 +186,12 @@ namespace Group_1_Travel_Experts
                 {
                     var suppliers = db.Suppliers.Select(s => new
                     {
-                        s.SupplierId,
                         s.SupName
                     }).OrderBy(s => s.SupName).ToList();
 
                     dataGridViewSuppliers.DataSource = suppliers; // displays the data from the Suppliers table in the data grid
 
                     // Rename the column
-                    dataGridViewSuppliers.Columns["SupplierId"].HeaderText = "Supplier ID";
                     dataGridViewSuppliers.Columns["SupName"].HeaderText = "Supplier Name";
 
                     // styling the column headers
@@ -203,12 +201,8 @@ namespace Group_1_Travel_Experts
                     dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
                     dataGridViewSuppliers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
 
-                    // format alternating rows
-                    //dataGridViewSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.Bisque;
-
                     // Resize the columns
-                    dataGridViewSuppliers.Columns[0].Width = 150;
-                    dataGridViewSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewSuppliers.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)

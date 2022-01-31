@@ -88,7 +88,7 @@ namespace Group_1_Travel_Experts
             this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewSuppliers.RowTemplate.Height = 25;
             this.dataGridViewSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSuppliers.Size = new System.Drawing.Size(693, 510);
+            this.dataGridViewSuppliers.Size = new System.Drawing.Size(496, 483);
             this.dataGridViewSuppliers.TabIndex = 0;
             this.dataGridViewSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSuppliers_CellContentClick);
             // 
@@ -108,7 +108,7 @@ namespace Group_1_Travel_Experts
             this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModify.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonModify.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonModify.Location = new System.Drawing.Point(300, 570);
+            this.buttonModify.Location = new System.Drawing.Point(202, 536);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(166, 37);
             this.buttonModify.TabIndex = 8;
@@ -121,7 +121,7 @@ namespace Group_1_Travel_Experts
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonAdd.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonAdd.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonAdd.Location = new System.Drawing.Point(44, 570);
+            this.buttonAdd.Location = new System.Drawing.Point(44, 536);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(139, 37);
             this.buttonAdd.TabIndex = 7;
@@ -134,7 +134,7 @@ namespace Group_1_Travel_Experts
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonDelete.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonDelete.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonDelete.Location = new System.Drawing.Point(583, 570);
+            this.buttonDelete.Location = new System.Drawing.Point(386, 536);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(154, 37);
             this.buttonDelete.TabIndex = 9;
@@ -147,7 +147,7 @@ namespace Group_1_Travel_Experts
             this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonExit.BackColor = System.Drawing.Color.BurlyWood;
             this.buttonExit.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonExit.Location = new System.Drawing.Point(583, 628);
+            this.buttonExit.Location = new System.Drawing.Point(386, 590);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(154, 39);
             this.buttonExit.TabIndex = 10;
@@ -162,7 +162,7 @@ namespace Group_1_Travel_Experts
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.buttonExit;
-            this.ClientSize = new System.Drawing.Size(785, 693);
+            this.ClientSize = new System.Drawing.Size(605, 643);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonModify);
