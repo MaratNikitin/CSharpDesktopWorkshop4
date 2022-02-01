@@ -158,32 +158,13 @@ namespace Group_1_Travel_Experts
                     #endregion
                     dgvSuppliers.DataSource = suppliersToAdd;
                 }
-                StyleDataGridView(dgvSuppliers);
+                StyleDataGridView.Style(dgvSuppliers);
             }
             catch (Exception ex)
             {
                 //error message
                 MessageBox.Show("Error occured when trying to display suppliers" + ex.Message, ex.GetType().ToString());
             }
-        }
-
-        /// <summary>
-        /// Sizes and styles the data grid view
-        /// </summary>
-        /// <param name="dgv"> suppliers grid</param>
-        private void StyleDataGridView(DataGridView dgv)
-        {
-            //Set header Style
-            dgv.Columns["SupName"].HeaderText = "Suppliers";
-            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Align header to the middle center
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
-
-            //Size columns
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // auto size the columns to fit all the cell's content
-            dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // first cell fills the empty space
         }
 
         /// <summary>

@@ -35,7 +35,7 @@ namespace Group_1_Travel_Experts
         {
             lblProdName.Text = selectedProductName;
             DisplaySuppliers();
-            StyleDataGridView(dgvSuppliers);
+            StyleDataGridView.Style(dgvSuppliers);
         }
 
         /// <summary>
@@ -223,22 +223,6 @@ namespace Group_1_Travel_Experts
             {
                 MessageBox.Show("Error has occured when trying to display the suppliers " + ex.Message, ex.GetType().ToString());
             }
-        }
-        
-        /// <summary>
-        /// Styles for the data grid view
-        /// </summary>
-        /// <param name="dgv"> Suppliers data grid view</param>
-        private void StyleDataGridView(DataGridView dgv)
-        {
-            //Set header Style
-            dgv.Columns["SupName"].HeaderText = "Suppliers";
-            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // first cell fills the empty space
         }
         
         /// <summary>

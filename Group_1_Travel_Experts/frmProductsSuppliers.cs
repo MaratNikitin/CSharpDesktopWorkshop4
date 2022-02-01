@@ -139,24 +139,6 @@ namespace Group_1_Travel_Experts
         }
 
         /// <summary>
-        /// Sizes and styles the data grid view
-        /// </summary>
-        /// <param name="dgv"> suppliers grid</param>
-        private void StyleDataGridView(DataGridView dgv)
-        {
-            //Set header Style
-            dgv.Columns["SupName"].HeaderText = "Suppliers";
-            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
-
-            //Size columns
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; // auto size the columns to fit all the cell's content
-            dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // first cell fills the empty space
-        }
-
-        /// <summary>
         /// Displays all the suppliers that correspond to the selected product
         /// </summary>
         private void DisplaySuppliers()
@@ -198,7 +180,9 @@ namespace Group_1_Travel_Experts
                         Text = "Delete"
                     };
                     dgvSuppliers.Columns.Add(deleteColumn);
-                    StyleDataGridView(dgvSuppliers);
+                    StyleDataGridView.Style(dgvSuppliers);
+                    // shrink delete buttons to fit to size
+                    dgvSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             catch (Exception ex)
             {
