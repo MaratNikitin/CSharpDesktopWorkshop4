@@ -103,6 +103,7 @@ namespace Group_1_Travel_Experts
                     /* Get supplier names based on the select product
                      * It will only display supplier that supply the selected product
                      */
+                    #region prodSupQuery
                     var prodSupQuery = (from prodSup in db.ProductsSuppliers
                                         join pps in db.PackagesProductsSuppliers // join packagesProductsSuppliers
                                              on prodSup.ProductSupplierId equals pps.ProductSupplierId into ps
@@ -115,13 +116,47 @@ namespace Group_1_Travel_Experts
                                             on prodSup.ProductId equals prod.ProductId
                                         // filter suppliers by selected product
                                         where prod.ProdName == cboProducts.SelectedValue.ToString()
-
-                                                //filter suppliers based on the PackagesProductSuppliers that already exsits
-                                                // Prevent duplicating data in PackagesProductSuppliers table
-                                                && subPPS.PackageId != selectedPackage.PackageId
-
                                         select new { supplier.SupName }).ToList(); // get supplier names
-                    dgvSuppliers.DataSource = prodSupQuery;
+                    #endregion
+                    //Gets all the suppliers that are linked to the selected package
+                    #region AllSuppliersFromPackage
+                    var allSuppliersFromPackage = (from prodSup in db.ProductsSuppliers
+                                        join pps in db.PackagesProductsSuppliers // join packagesProductsSuppliers
+                                             on prodSup.ProductSupplierId equals pps.ProductSupplierId into ps
+                                        from subPPS in ps.DefaultIfEmpty()
+
+                                        join supplier in db.Suppliers // join suppliers table
+                                             on prodSup.SupplierId equals supplier.SupplierId
+
+                                        // filter suppliers by selected product
+                                        where subPPS.PackageId == selectedPackage.PackageId
+                                        select new { supplier.SupName }).ToList(); // get supplier names
+                    #endregion
+                    // List of suppliers that are filtered based on search and suppliers that were already linked 
+                    // to the selected package
+                    List<object> suppliersToAdd = new List<object>();
+                    //Filter out the suppliers that are already linked to the selected product
+                    #region Filter Suppliers
+                    foreach (var prodSupName in prodSupQuery)
+                    {
+                        // counts how many matching supplier names from ProductSupplierQuery and AllSuppliers 
+                        int counter = 0;
+
+                        foreach (var supName in allSuppliersFromPackage)
+                        {
+                            if (prodSupName.SupName == supName.SupName)
+                            {
+                                counter++;
+                            }
+                        }
+                        // add the supplier if there are no matches
+                        if (counter == 0)
+                        {
+                            suppliersToAdd.Add(prodSupName);
+                        }
+                    }
+                    #endregion
+                    dgvSuppliers.DataSource = suppliersToAdd;
                 }
                 StyleDataGridView(dgvSuppliers);
             }
