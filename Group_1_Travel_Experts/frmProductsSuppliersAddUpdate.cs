@@ -147,7 +147,7 @@ namespace Group_1_Travel_Experts
             }
             catch (Exception ex) // dispay error message
             {
-                MessageBox.Show("Error has occured when trying to display and filter the suppliers" 
+                MessageBox.Show("Error has occured when trying to display and filter the suppliers " 
                                 + ex.Message, ex.GetType().ToString());
             }
         }
@@ -221,7 +221,7 @@ namespace Group_1_Travel_Experts
             } 
             catch (Exception ex) // dispay error message
             {
-                MessageBox.Show("Error has occured when trying to display the suppliers" + ex.Message, ex.GetType().ToString());
+                MessageBox.Show("Error has occured when trying to display the suppliers " + ex.Message, ex.GetType().ToString());
             }
         }
         
