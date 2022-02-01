@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
@@ -21,8 +22,7 @@ namespace Group_1_Travel_Experts
     {
 
         Products selectedProduct = null; // current customer
-       
-        
+
         public frmProducts()
         {
             InitializeComponent();
@@ -83,11 +83,21 @@ namespace Group_1_Travel_Experts
         //user clicks the Add button
         private void btnAddProd_Click(object sender, EventArgs e)
         {
+            List<string> productNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allProducts = (from products in db.Products
+                                   select new { products.ProdName }).ToList();
+                foreach (var prod in allProducts)
+                {
+                    productNames.Add(prod.ProdName);
+                }
+            }
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();//creating the instance of the product form
             secondForm.isAdd = true;//secondform instance is true when user adds a product
             secondForm.Product = null;//otherwise no change
+            secondForm.productNames = productNames; // list of all suppliers in the database
 
-            
             DialogResult result = secondForm.ShowDialog(); // display second form modal
 
             if (result == DialogResult.OK) 
@@ -126,8 +136,20 @@ namespace Group_1_Travel_Experts
 
         private void btnModifyProd_Click(object sender, EventArgs e)
         {
+            List<string> productNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allProducts = (from products in db.Products
+                                   select new { products.ProdName }).ToList();
+                foreach (var prod in allProducts)
+                {
+                    productNames.Add(prod.ProdName);
+                }
+            }
+
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();  //new instance of the frm is created
             secondForm.isAdd = false; //not adding data, modifying it
+            secondForm.productNames = productNames; // list of all suppliers in the database
             
             try
             {
