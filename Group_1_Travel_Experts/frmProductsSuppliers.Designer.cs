@@ -49,9 +49,9 @@ namespace Group_1_Travel_Experts
             this.cboProducts.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cboProducts.ForeColor = System.Drawing.Color.Maroon;
             this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(95, 12);
+            this.cboProducts.Location = new System.Drawing.Point(110, 12);
             this.cboProducts.Name = "cboProducts";
-            this.cboProducts.Size = new System.Drawing.Size(235, 29);
+            this.cboProducts.Size = new System.Drawing.Size(252, 36);
             this.cboProducts.TabIndex = 0;
             this.cboProducts.SelectedIndexChanged += new System.EventHandler(this.cboProducts_SelectedIndexChanged);
             // 
@@ -92,6 +92,7 @@ namespace Group_1_Travel_Experts
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSuppliers.RowHeadersVisible = false;
+            this.dgvSuppliers.RowHeadersWidth = 51;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.PowderBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon;
@@ -109,7 +110,7 @@ namespace Group_1_Travel_Experts
             this.labelPackages.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPackages.Location = new System.Drawing.Point(12, 15);
             this.labelPackages.Name = "labelPackages";
-            this.labelPackages.Size = new System.Drawing.Size(75, 21);
+            this.labelPackages.Size = new System.Drawing.Size(92, 28);
             this.labelPackages.TabIndex = 14;
             this.labelPackages.Text = "Products";
             // 
@@ -118,7 +119,7 @@ namespace Group_1_Travel_Experts
             this.btnAdd.BackColor = System.Drawing.Color.BurlyWood;
             this.btnAdd.Location = new System.Drawing.Point(12, 430);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(136, 29);
+            this.btnAdd.Size = new System.Drawing.Size(136, 37);
             this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "&Add Supplier";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -137,7 +138,7 @@ namespace Group_1_Travel_Experts
             // 
             // frmProductsSuppliers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

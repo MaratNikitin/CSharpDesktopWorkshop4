@@ -81,6 +81,7 @@ namespace Group_1_Travel_Experts
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSuppliers.RowHeadersVisible = false;
+            this.dgvSuppliers.RowHeadersWidth = 51;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.PowderBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon;
@@ -95,7 +96,7 @@ namespace Group_1_Travel_Experts
             this.btnAdd.BackColor = System.Drawing.Color.BurlyWood;
             this.btnAdd.Location = new System.Drawing.Point(61, 529);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(144, 34);
+            this.btnAdd.Size = new System.Drawing.Size(144, 42);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "&Add Supplier";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -109,7 +110,7 @@ namespace Group_1_Travel_Experts
             this.txtSearch.Location = new System.Drawing.Point(12, 46);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search";
-            this.txtSearch.Size = new System.Drawing.Size(459, 29);
+            this.txtSearch.Size = new System.Drawing.Size(459, 34);
             this.txtSearch.TabIndex = 17;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -120,7 +121,7 @@ namespace Group_1_Travel_Experts
             this.labelPackages.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPackages.Location = new System.Drawing.Point(12, 9);
             this.labelPackages.Name = "labelPackages";
-            this.labelPackages.Size = new System.Drawing.Size(72, 21);
+            this.labelPackages.Size = new System.Drawing.Size(88, 28);
             this.labelPackages.TabIndex = 19;
             this.labelPackages.Text = "Product:";
             // 
@@ -131,7 +132,7 @@ namespace Group_1_Travel_Experts
             this.lblProdName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblProdName.Location = new System.Drawing.Point(90, 9);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(115, 21);
+            this.lblProdName.Size = new System.Drawing.Size(143, 28);
             this.lblProdName.TabIndex = 20;
             this.lblProdName.Text = "Product Name";
             // 
@@ -140,7 +141,7 @@ namespace Group_1_Travel_Experts
             this.btnCancel.BackColor = System.Drawing.Color.BurlyWood;
             this.btnCancel.Location = new System.Drawing.Point(275, 529);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(144, 34);
+            this.btnCancel.Size = new System.Drawing.Size(144, 42);
             this.btnCancel.TabIndex = 21;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -148,7 +149,7 @@ namespace Group_1_Travel_Experts
             // 
             // frmProductsSuppliersAddUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
