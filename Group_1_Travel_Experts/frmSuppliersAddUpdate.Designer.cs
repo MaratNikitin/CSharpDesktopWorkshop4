@@ -41,11 +41,11 @@ namespace Group_1_Travel_Experts
             this.textBoxSupplierName.BackColor = System.Drawing.Color.Linen;
             this.textBoxSupplierName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxSupplierName.ForeColor = System.Drawing.Color.Maroon;
-            this.textBoxSupplierName.Location = new System.Drawing.Point(162, 51);
+            this.textBoxSupplierName.Location = new System.Drawing.Point(204, 51);
             this.textBoxSupplierName.MaxLength = 50;
             this.textBoxSupplierName.Name = "textBoxSupplierName";
             this.textBoxSupplierName.PlaceholderText = "50 characters maximum";
-            this.textBoxSupplierName.Size = new System.Drawing.Size(542, 29);
+            this.textBoxSupplierName.Size = new System.Drawing.Size(500, 34);
             this.textBoxSupplierName.TabIndex = 0;
             this.textBoxSupplierName.Tag = "Supplier Name";
             // 
@@ -55,7 +55,7 @@ namespace Group_1_Travel_Experts
             this.labelName.BackColor = System.Drawing.Color.Transparent;
             this.labelName.Location = new System.Drawing.Point(28, 54);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(128, 21);
+            this.labelName.Size = new System.Drawing.Size(157, 28);
             this.labelName.TabIndex = 6;
             this.labelName.Text = "Supplier Name:";
             // 
@@ -88,12 +88,12 @@ namespace Group_1_Travel_Experts
             // frmSuppliersAddUpdate
             // 
             this.AcceptButton = this.buttonAccept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Group_1_Travel_Experts.Properties.Resources.MyBackground_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(735, 187);
+            this.ClientSize = new System.Drawing.Size(839, 187);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.textBoxSupplierName);

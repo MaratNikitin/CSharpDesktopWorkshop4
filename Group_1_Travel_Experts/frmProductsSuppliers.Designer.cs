@@ -128,9 +128,9 @@ namespace Group_1_Travel_Experts
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.BurlyWood;
-            this.btnExit.Location = new System.Drawing.Point(962, 527);
+            this.btnExit.Location = new System.Drawing.Point(962, 514);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(136, 29);
+            this.btnExit.Size = new System.Drawing.Size(136, 42);
             this.btnExit.TabIndex = 19;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = false;
