@@ -169,6 +169,8 @@ namespace Group_1_Travel_Experts
                                              //get all the suppliers that supplies the product with the same productName in the combo box
                                              .Where(m => m.product.ProdName == cboProducts.SelectedValue.ToString())
 
+                                             .OrderBy(s => s.newProductSupplier.supplier.SupName)
+
                                              .Select(m => new { m.newProductSupplier.supplier.SupName }).ToList(); // get supplier name
                 }
                     // add column for delete buttons
