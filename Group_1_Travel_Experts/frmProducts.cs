@@ -1,14 +1,12 @@
 ﻿using Group_1_Travel_Experts.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
@@ -24,8 +22,7 @@ namespace Group_1_Travel_Experts
     {
 
         Products selectedProduct = null; // current customer
-       
-        
+
         public frmProducts()
         {
             InitializeComponent();
@@ -50,7 +47,7 @@ namespace Group_1_Travel_Experts
                     //linq query to produce the data
                     var products = db.Products
                         .OrderBy(p => p.ProdName)
-                        .Select(p => new { p.ProdName })
+                        .Select(p => new { p.ProductId, p.ProdName})
                         .ToList();
                     //p.ProductId,
                     //linq query data gets assigned
@@ -61,12 +58,19 @@ namespace Group_1_Travel_Experts
                     btnDeleteProd.Enabled = true;
                     btnAddProd.Enabled = true;
 
-                    // styling the DataGridView object:
-                    dgvProducts.EnableHeadersVisualStyles = false;
+                    // Rename the column
+                    dgvProducts.Columns["ProdName"].HeaderText = "Products";
+
+                    // styling the column headers
+                    dgvProducts.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
                     dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-                    
-                    dgvProducts.Columns[0].HeaderText = "Product Name";
-                    dgvProducts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProducts.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
+                    dgvProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
+                    dgvProducts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // setting central text alignment
+
+                    // Resize the columns
+                    dgvProducts.Columns[0].Visible = false; // hide the ProductId column
+                    dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -79,11 +83,21 @@ namespace Group_1_Travel_Experts
         //user clicks the Add button
         private void btnAddProd_Click(object sender, EventArgs e)
         {
+            List<string> productNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allProducts = (from products in db.Products
+                                   select new { products.ProdName }).ToList();
+                foreach (var prod in allProducts)
+                {
+                    productNames.Add(prod.ProdName);
+                }
+            }
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();//creating the instance of the product form
             secondForm.isAdd = true;//secondform instance is true when user adds a product
             secondForm.Product = null;//otherwise no change
+            secondForm.productNames = productNames; // list of all suppliers in the database
 
-            
             DialogResult result = secondForm.ShowDialog(); // display second form modal
 
             if (result == DialogResult.OK) 
@@ -96,8 +110,6 @@ namespace Group_1_Travel_Experts
                 {
                     try
                     {
-                        
-                        
                         //This code updates the database with the new entry
                         db.Products.Add(selectedProduct);
                         db.SaveChanges();
@@ -124,8 +136,20 @@ namespace Group_1_Travel_Experts
 
         private void btnModifyProd_Click(object sender, EventArgs e)
         {
+            List<string> productNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allProducts = (from products in db.Products
+                                   select new { products.ProdName }).ToList();
+                foreach (var prod in allProducts)
+                {
+                    productNames.Add(prod.ProdName);
+                }
+            }
+
             frmProductsAddUpdate secondForm = new frmProductsAddUpdate();  //new instance of the frm is created
             secondForm.isAdd = false; //not adding data, modifying it
+            secondForm.productNames = productNames; // list of all suppliers in the database
             
             try
             {
@@ -133,7 +157,7 @@ namespace Group_1_Travel_Experts
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
                     var selectedQuery = (from product in db.Products
-                                         where product.ProdName == dgvProducts.SelectedCells[0].Value.ToString()
+                                         where product.ProductId == (int)dgvProducts.SelectedCells[0].Value
                                          select new { product }).Single();
                     selectedProduct = selectedQuery.product;// get selected product
                 }
@@ -183,7 +207,7 @@ namespace Group_1_Travel_Experts
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
                     var selectedQuery = (from product in db.Products
-                                         where product.ProdName == dgvProducts.SelectedCells[0].Value.ToString()
+                                         where product.ProductId == (int)dgvProducts.SelectedCells[0].Value
                                          select new { product }).Single();
                     selectedProduct = selectedQuery.product;
                 }

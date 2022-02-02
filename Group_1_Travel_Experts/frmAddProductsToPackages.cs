@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -103,6 +102,7 @@ namespace Group_1_Travel_Experts
                     /* Get supplier names based on the select product
                      * It will only display supplier that supply the selected product
                      */
+                    #region prodSupQuery
                     var prodSupQuery = (from prodSup in db.ProductsSuppliers
                                         join pps in db.PackagesProductsSuppliers // join packagesProductsSuppliers
                                              on prodSup.ProductSupplierId equals pps.ProductSupplierId into ps
@@ -115,40 +115,55 @@ namespace Group_1_Travel_Experts
                                             on prodSup.ProductId equals prod.ProductId
                                         // filter suppliers by selected product
                                         where prod.ProdName == cboProducts.SelectedValue.ToString()
-
-                                                //filter suppliers based on the PackagesProductSuppliers that already exsits
-                                                // Prevent duplicating data in PackagesProductSuppliers table
-                                                && subPPS.PackageId != selectedPackage.PackageId
-
                                         select new { supplier.SupName }).ToList(); // get supplier names
-                    dgvSuppliers.DataSource = prodSupQuery;
+                    #endregion
+                    //Gets all the suppliers that are linked to the selected package
+                    #region AllSuppliersFromPackage
+                    var allSuppliersFromPackage = (from prodSup in db.ProductsSuppliers
+                                        join pps in db.PackagesProductsSuppliers // join packagesProductsSuppliers
+                                             on prodSup.ProductSupplierId equals pps.ProductSupplierId into ps
+                                        from subPPS in ps.DefaultIfEmpty()
+
+                                        join supplier in db.Suppliers // join suppliers table
+                                             on prodSup.SupplierId equals supplier.SupplierId
+
+                                        // filter suppliers by selected product
+                                        where subPPS.PackageId == selectedPackage.PackageId
+                                        select new { supplier.SupName }).ToList(); // get supplier names
+                    #endregion
+                    // List of suppliers that are filtered based on search and suppliers that were already linked 
+                    // to the selected package
+                    List<object> suppliersToAdd = new List<object>();
+                    //Filter out the suppliers that are already linked to the selected product
+                    #region Filter Suppliers
+                    foreach (var prodSupName in prodSupQuery)
+                    {
+                        // counts how many matching supplier names from ProductSupplierQuery and AllSuppliers 
+                        int counter = 0;
+
+                        foreach (var supName in allSuppliersFromPackage)
+                        {
+                            if (prodSupName.SupName == supName.SupName)
+                            {
+                                counter++;
+                            }
+                        }
+                        // add the supplier if there are no matches
+                        if (counter == 0)
+                        {
+                            suppliersToAdd.Add(prodSupName);
+                        }
+                    }
+                    #endregion
+                    dgvSuppliers.DataSource = suppliersToAdd;
                 }
-                StyleDataGridView(dgvSuppliers);
+                StyleDataGridView.Style(dgvSuppliers);
             }
             catch (Exception ex)
             {
                 //error message
                 MessageBox.Show("Error occured when trying to display suppliers" + ex.Message, ex.GetType().ToString());
             }
-        }
-
-        /// <summary>
-        /// Sizes and styles the data grid view
-        /// </summary>
-        /// <param name="dgv"> suppliers grid</param>
-        private void StyleDataGridView(DataGridView dgv)
-        {
-            //Set header Style
-            dgv.Columns["SupName"].HeaderText = "Suppliers";
-            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Align header to the middle center
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
-
-            //Size columns
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // auto size the columns to fit all the cell's content
-            dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // first cell fills the empty space
         }
 
         /// <summary>

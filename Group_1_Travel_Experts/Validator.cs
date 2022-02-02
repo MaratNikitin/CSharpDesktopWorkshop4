@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 /*
@@ -140,6 +141,28 @@ namespace Group_1_Travel_Experts
                 }
             }
             return msg;
+        }
+
+        public static bool isUnique(List<string> objNames, string newName)
+        {
+            bool result = true;
+            int counter = 0;
+            foreach(string name in objNames)
+            {
+                if(newName.ToUpper() == name.ToUpper())
+                {
+                    counter++;
+                }
+            }
+            if(counter == 0)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

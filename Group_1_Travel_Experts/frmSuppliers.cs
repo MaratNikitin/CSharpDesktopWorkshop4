@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 
 /*
  * This app allows users to perform CRUD operations on select tables in the TravelExperts database
@@ -35,10 +36,20 @@ namespace Group_1_Travel_Experts
         // when the user clicks the add button
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            List<string> supplierNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allSupliers = (from suppliers in db.Suppliers
+                                  select new {suppliers.SupName}).ToList();
+                foreach (var sup in allSupliers)
+                {
+                    supplierNames.Add(sup.SupName);
+                }
+            }
             frmSuppliersAddUpdate secondForm = new frmSuppliersAddUpdate(); // create an instance of the secondform
             secondForm.isAdd = true; // tells the second form that the user is trying to add a supplier
             secondForm.supplier = null; // were not modifying an existing supplier, so for now supplier is null
-
+            secondForm.supplierNames = supplierNames; // list of all suppliers in the database
             DialogResult result = secondForm.ShowDialog(); // displays the second form
 
             if (result == DialogResult.OK) // second form has supplier object with data
@@ -75,9 +86,19 @@ namespace Group_1_Travel_Experts
         // when the user clicks the modify button
         private void buttonModify_Click(object sender, EventArgs e)
         {
+            List<string> supplierNames = new List<string>();
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                var allSupliers = (from suppliers in db.Suppliers
+                                   select new { suppliers.SupName }).ToList();
+                foreach (var sup in allSupliers)
+                {
+                    supplierNames.Add(sup.SupName);
+                }
+            }
             frmSuppliersAddUpdate secondForm = new frmSuppliersAddUpdate(); // create an instance of the secondform
             secondForm.isAdd = false; // we want to modify
-
+            secondForm.supplierNames = supplierNames; // list of all suppliers in the database
             // find the DataGridView selected row in the db and set the supplier value on the second form to it
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
@@ -179,10 +200,6 @@ namespace Group_1_Travel_Experts
             this.Close(); // closes the form
         }
 
-
-        // Class methods:
-
-
         /// <summary>
         /// Displays data from the suppliers table in the datagridviewSuppliers
         /// </summary>
@@ -238,11 +255,6 @@ namespace Group_1_Travel_Experts
                 message += $"Error {err.Number}: {err.Message}\n";
             }
             MessageBox.Show(message, "Database error(s)");
-        }
-
-        private void dataGridViewSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

@@ -90,7 +90,6 @@ namespace Group_1_Travel_Experts
             this.dataGridViewSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSuppliers.Size = new System.Drawing.Size(496, 483);
             this.dataGridViewSuppliers.TabIndex = 0;
-            this.dataGridViewSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSuppliers_CellContentClick);
             // 
             // labelSuppliers
             // 

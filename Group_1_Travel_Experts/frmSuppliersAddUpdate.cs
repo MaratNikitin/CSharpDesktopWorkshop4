@@ -1,5 +1,6 @@
 ﻿using Group_1_Travel_Experts.Models;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 /*
@@ -16,7 +17,8 @@ namespace Group_1_Travel_Experts
     {
         public bool isAdd; // for the Add and modify buttons where true = Add, false = Modify 
         public Suppliers supplier; // the product to be modified
-
+        public List<string> supplierNames; // list of suppliers that are already in the database
+        private string initialSupName; // initial supplier that is being modified
         public frmSuppliersAddUpdate()
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace Group_1_Travel_Experts
                     {
                         // Display the data of the selected product
                         textBoxSupplierName.Text = supplier.SupName;
+                        initialSupName = supplier.SupName;
                     }
                 }
                 // catch any exceptions
@@ -56,15 +59,36 @@ namespace Group_1_Travel_Experts
             // need to validate the form data
             if (Validator.IsTextPresent(textBoxSupplierName))
             {
-                if (isAdd) // if Adding, create an new supplier instance 
+                if(isAdd && Validator.isUnique(supplierNames, textBoxSupplierName.Text)) // if Adding, create an new supplier instance 
                 {
                     supplier = new Suppliers();
+                    // set the product object values to the form data values
+                    supplier.SupName = textBoxSupplierName.Text.ToUpper();
+                    this.DialogResult = DialogResult.OK; // close the form
                 }
-
-                // set the product object values to the form data values
-                supplier.SupName = textBoxSupplierName.Text.ToUpper();
-
-                this.DialogResult = DialogResult.OK; // close the form
+                else if(isAdd == false && Validator.isUnique(supplierNames, textBoxSupplierName.Text)) // modifying
+                {
+                    supplier.SupName = textBoxSupplierName.Text.ToUpper();
+                    this.DialogResult = DialogResult.OK; // close the form
+                }
+                // The supplier already exists when trying to add
+                else if (isAdd)
+                {
+                    MessageBox.Show("Supplier already exists");
+                    textBoxSupplierName.Clear();
+                }
+                // The supplier already exists when trying to add
+                else if (isAdd == false && textBoxSupplierName.Text.ToUpper() != initialSupName)
+                {
+                    MessageBox.Show("Supplier already exists");
+                    textBoxSupplierName.Text = initialSupName;
+                }
+                // No changes were made when modifying
+                else
+                {
+                    MessageBox.Show("No changes to the selected supplier");
+                    this.DialogResult = DialogResult.OK; // close the form
+                }
             }
         }
 

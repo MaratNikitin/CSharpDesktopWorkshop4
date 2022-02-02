@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -112,41 +111,30 @@ namespace Group_1_Travel_Experts
 
             if(result == DialogResult.Yes) // user confirms yes
             {
-                using(TravelExpertsContext db = new TravelExpertsContext())
+                try
                 {
-                    //Query to get the selected productSupplierID based on the product name and supplier name selected
-                    var selectedSupplier = (from productsSuppliers in db.ProductsSuppliers
-                                           join suppliers in db.Suppliers on productsSuppliers.SupplierId equals suppliers.SupplierId
-                                           join products in db.Products on productsSuppliers.ProductId equals products.ProductId
-                                           where products.ProdName == productName && suppliers.SupName == supplierName
-                                           select new {productsSuppliers.ProductSupplierId}).Single();
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        //Query to get the selected productSupplierID based on the product name and supplier name selected
+                        var selectedSupplier = (from productsSuppliers in db.ProductsSuppliers
+                                                join suppliers in db.Suppliers on productsSuppliers.SupplierId equals suppliers.SupplierId
+                                                join products in db.Products on productsSuppliers.ProductId equals products.ProductId
+                                                where products.ProdName == productName && suppliers.SupName == supplierName
+                                                select new { productsSuppliers.ProductSupplierId }).Single();
 
-                    //get selected productSupplier 
-                    ProductsSuppliers deleteProductSupplier = db.ProductsSuppliers.Find(selectedSupplier.ProductSupplierId);
-                    
-                    db.Remove(deleteProductSupplier);//remove ProductsSupplier
-                    db.SaveChanges(); // save changes
+                        //get selected productSupplier 
+                        ProductsSuppliers deleteProductSupplier = db.ProductsSuppliers.Find(selectedSupplier.ProductSupplierId);
+
+                        db.Remove(deleteProductSupplier);//remove ProductsSupplier
+                        db.SaveChanges(); // save changes
+                    }
+                    DisplaySuppliers(); // update display
                 }
-                DisplaySuppliers(); // update display
+                catch (Exception ex) // display error message
+                {
+                    MessageBox.Show("Error has occured when trying to delete a supplier " + ex.Message, ex.GetType().ToString());
+                }
             }
-        }
-
-        /// <summary>
-        /// Sizes and styles the data grid view
-        /// </summary>
-        /// <param name="dgv"> suppliers grid</param>
-        private void StyleDataGridView(DataGridView dgv)
-        {
-            //Set header Style
-            dgv.Columns["SupName"].HeaderText = "Suppliers";
-            dgv.EnableHeadersVisualStyles = false; // enabling manual background color change in the next code row
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Bisque; // setting the desired background color
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Bisque; // to avoid highlighting selected columns
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Maroon; // setting the same font color as for other rows
-
-            //Size columns
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; // auto size the columns to fit all the cell's content
-            dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // first cell fills the empty space
         }
 
         /// <summary>
@@ -191,7 +179,9 @@ namespace Group_1_Travel_Experts
                         Text = "Delete"
                     };
                     dgvSuppliers.Columns.Add(deleteColumn);
-                    StyleDataGridView(dgvSuppliers);
+                    StyleDataGridView.Style(dgvSuppliers);
+                    // shrink delete buttons to fit to size
+                    dgvSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             catch (Exception ex)
             {

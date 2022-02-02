@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Group_1_Travel_Experts.Models;
 
 /*
  * This app helps doing CRUD operations with the select tables of the 'TravelExperts' database.
